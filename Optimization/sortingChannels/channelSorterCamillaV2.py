@@ -2,9 +2,12 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.postprocessor import Pos
 from PhysicsTools.NanoAODTools.postprocessing.framework.datamodel import Collection 
 from PhysicsTools.NanoAODTools.postprocessing.framework.eventloop import Module
 from addingNewObservableBranches.visibleMassCamilla import VisibleMassCamilla  #Importing modules works if the folders are in the place where the scripts are
+from addingNewObservableBranches.visibleMassPart2 import VisibleMassPart2
 from addingNewObservableBranches.fastMTTBranches import fastMTTBranches
+
 #from addingNewObservableBranches.genMeasurementRadionBranches import genMeasurementRadionBranches
 from sortingTausCamilla import mergeTauCamilla
+from sortingTausPart2 import mergeTauPart2
 import ROOT
 import glob
 from particleClass import particle
@@ -628,15 +631,18 @@ class ChannelCamilla(Module):
 def call_postpoc(files):
 		letsSortChannels = lambda: ChannelCamilla(filename)
 		tauOdering = lambda: mergeTauCamilla(filename)
+		tauOdering2 = lambda: mergeTauPart2(filename)
 		visibleM = lambda:VisibleMassCamilla()
+		visibleM2 = lambda:VisibleMassPart2()
 		mttBranches = lambda:fastMTTBranches(filename)
+
 		#radBranches = lambda:genMeasurementRadionBranches(filename)
 		nameStrip=files.strip()
 		filename = (nameStrip.split('/')[-1]).split('.')[-2]
 		if filename == "Data":
-			p = PostProcessor(outputDir,[files], cut=cutsData,branchsel=outputbranches,modules=[letsSortChannels(),tauOdering(),visibleM(),mttBranches()], postfix=post,noOut=False,outputbranchsel=outputbranches)
+			p = PostProcessor(outputDir,[files], cut=cutsData,branchsel=outputbranches,modules=[letsSortChannels(),tauOdering(),tauOdering2(),visibleM(),visibleM2(),mttBranches()], postfix=post,noOut=False,outputbranchsel=outputbranches)
 		else:
-			p = PostProcessor(outputDir,[files], cut=cuts,branchsel=outputbranches,modules=[letsSortChannels(),tauOdering(),visibleM(),mttBranches()], postfix=post,noOut=False,outputbranchsel=outputbranches)
+			p = PostProcessor(outputDir,[files], cut=cuts,branchsel=outputbranches,modules=[letsSortChannels(),tauOdering(),tauOdering2(),visibleM(),visibleM2(),mttBranches()], postfix=post,noOut=False,outputbranchsel=outputbranches)
 
 
 		p.run()
