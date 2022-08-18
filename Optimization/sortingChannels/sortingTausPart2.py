@@ -38,7 +38,7 @@ class mergeTauPart2(Module):
     def createBranches(self,prefix):
         if self.setUp != None:
             return
-        self.out.branch(prefix+"nallTau","I")
+        self.out.branch("{}".format(prefix+"nallTau"),"I")
         type_dict = {"Float_t" : "F", "Int_t": "I", "Bool_t" : "O", "UChar_t": "I"}
         for leaf in self.tauCollection._event._tree.GetListOfLeaves():
             lName = leaf.GetName()
@@ -64,9 +64,13 @@ class mergeTauPart2(Module):
     def fillBranches(self,colllist,prefix):
         if prefix=="tt":
             length = 2
-        elif (prefix=="et" or prefix=="mt"):
+        else:
+            length = 0
+        if (prefix=="et" or prefix=="mt"):
             length = 1
-        self.out.fillBranch(prefix+"nallTau",length)
+        else:
+            length = 0
+        self.out.fillBranch("{}".format(prefix+"nallTau"),length)
         for branch in self.branch_names_tau.keys():           
             for branch2 in self.branch_names_btau.keys():
                 if branch==branch2:
@@ -108,23 +112,30 @@ class mergeTauPart2(Module):
         if event.tt == 1:
             if (len(self.diTauboostedTauCollection)==2):
                 colllist_tt.append(self.diTauboostedTauCollection)
-            elif (len(self.diTauTauCollection==2)):
+            elif (len(self.diTauTauCollection)==2):
                 colllist_tt.append(self.diTauTauCollection)
-            self.fillBranches("tt")
+            self.fillBranches(colllist_tt,"tt")
+        else:
+            self.fillBranches(colllist_tt,"tt")
         
         if event.et == 1:
             if (len(self.eTauboostedTauCollection)==1):
                 collist_et.append(self.eTauboostedTauCollection)
             elif (len(self.eTauTauCollection)==1):
                 collist_et.append(self.eTauTauCollection)
-            self.fillBranches("et")
+            self.fillBranches(collist_et,"et")
+        else:
+            self.fillBranches(collist_et,"et")
+
 
         if event.mt == 1:
             if (len(self.mTauboostedTauCollection)==1):
                 collist_mt.append(self.mTauboostedTauCollection)
             elif (len(self.mTauTauCollection)==1):
                 collist_mt.append(self.mTauTauCollection)
-            self.fillBranches("mt")   
+            self.fillBranches(collist_mt,"mt")
+        else:
+            self.fillBranches(collist_mt,"mt")   
         return True     
 
 

@@ -1,4 +1,3 @@
-from branchesList import *
 from particleClass import particle
 
 import ROOT

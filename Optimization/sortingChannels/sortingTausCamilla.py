@@ -5,7 +5,7 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.eventloop import Module
 import ROOT
 import glob
 #from particleClass import particle
-from branchesList import *
+#from branchesList import *
 import multiprocessing as  np
 import argparse
 

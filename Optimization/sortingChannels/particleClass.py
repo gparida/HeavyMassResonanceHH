@@ -30,7 +30,7 @@ class particle(object):
 		if self.branch_names:
 			return
 		
-		print("here", self.particleType)
+		#print("here", self.particleType)
 		type_dict = {"Float_t" : "F", "Int_t": "I", "Bool_t" : "O", "UChar_t": "I"}
 		for leaf in self.collection._event._tree.GetListOfLeaves():
 			lName = leaf.GetName()
@@ -47,7 +47,7 @@ class particle(object):
 		if self.branch_names:
 			return
 		
-		print("here", self.particleType)
+		#print("here", self.particleType)
 
 	
 	#Cuts more complicated for some objects could be added in a separate class that inherits particle class

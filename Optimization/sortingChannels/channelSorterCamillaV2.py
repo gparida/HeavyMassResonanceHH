@@ -218,8 +218,7 @@ class ChannelCamilla(Module):
 		if isObj != "bad":
 			return True
 		else:
-			return False
-	
+			return False	
 	def MuonTauOverlap(self,CollectionObject):
 		isObj =""
 		tau = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
@@ -277,21 +276,25 @@ class ChannelCamilla(Module):
 			subsubleadingMatch.SetPtEtaPhiM(tau.SubSubLeadingElectronPt,tau.SubSubLeadingElectronEta,tau.SubSubLeadingElectronPhi,tau.SubSubLeadingElectronM)
 			if (ele.p4().DeltaR(leadingMatch) < 0.02):					
 				if ((tau.LeadingElectronCorrIso/tau.LeadingElectronPt)<isolationCut):
+					print ("Leading Ele Matched")
 					return True
 				else:
 					return False
 			elif (ele.p4().DeltaR(subleadingMatch) < 0.02):
 				if ((tau.SubLeadingElectronCorrIso/tau.SubLeadingElectronPt)<isolationCut):
+					print ("subLeading Ele Matched")
 					return True
 				else:
 					return False
 			elif (ele.p4().DeltaR(subsubleadingMatch) < 0.02):
 				if ((tau.SubSubLeadingElectronCorrIso/tau.SubSubLeadingElectronPt)<isolationCut):
+					print ("subsubLeading Ele Matched")
 					return True
 				else:
 					return False
 			else:
 				if ((ele.pfRelIso03_all) < isolationCut):
+					print ("pf Ele Isolation")
 					return True
 				else:
 					return False
@@ -317,21 +320,25 @@ class ChannelCamilla(Module):
 			subsubleadingMatch.SetPtEtaPhiM(tau.SubSubLeadingMuonPt,tau.SubSubLeadingMuonEta,tau.SubSubLeadingMuonPhi,tau.SubSubLeadingMuonM)
 			if (muo.p4().DeltaR(leadingMatch) < 0.02):					
 				if ((tau.LeadingMuonCorrIso/tau.LeadingMuonPt)< isolationCut):
+					print ("Leading Muon Matched")
 					return True
 				else:
 					return False
 			elif (muo.p4().DeltaR(subleadingMatch) < 0.02):
 				if ((tau.SubLeadingMuonCorrIso/tau.SubLeadingMuonPt)< isolationCut):
+					print ("subLeading Muon Matched")
 					return True
 				else:
 					return False
 			elif (muo.p4().DeltaR(subsubleadingMatch) < 0.02):
 				if ((tau.SubSubLeadingMuonCorrIso/tau.SubSubLeadingMuonPt)< isolationCut):
+					print ("subsubLeading Muon Matched")
 					return True
 				else:
 					return False
 			else:
 				if ((muo.pfRelIso04_all)< isolationCut):
+					print ("pf Muon Isolation")
 					return True
 				else:
 					return False
@@ -445,6 +452,7 @@ class ChannelCamilla(Module):
 		#print ("before channel","boostedTauLength = ",len(self.boostedTau.collection),"Tau length = ",len(self.Tau.collection))
 
 		#if (len(self.FatJet.collection)==1 and len(self.Jet.collection)==0):
+		#print ("Jet type = ", type(self.Jet))
 		if (len(self.FatJet.collection)==1):
 			list["bb"]=self.selfPairing(self.boostedTau.collection)
 			list["tt"]=self.selfPairing(self.Tau.collection)
@@ -480,9 +488,9 @@ class ChannelCamilla(Module):
 						self.out.fillBranch("tt",0)
 
 				if (list["be"][0]> 0 or list["te"][0]>0):
-					self.out.fillBranch("te",1)
+					self.out.fillBranch("et",1)
 					self.eTauFatJet.collection=self.FatJet.collection
-					self.eTauJet = self.Tau.collection
+					self.eTauJet.collection = self.Jet.collection
 					if (list["be"][0]> list["te"][0]):
 						self.eTauboostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list["be"][1]]
 						self.eTauElectron.collection= [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==list["be"][2]]
@@ -499,12 +507,12 @@ class ChannelCamilla(Module):
 					self.eTauboostedTau.collection=[]
 					self.eTauFatJet.collection=[]
 					self.eTauJet.collection=[]
-					self.out.fillBranch("te",0)
+					self.out.fillBranch("et",0)
 
 				if (list["bm"][0]> 0 or list["tm"][0]>0):
-					self.out.fillBranch("tm",1)
+					self.out.fillBranch("mt",1)
 					self.mTauFatJet.collection=self.FatJet.collection
-					self.mTauJet = self.Tau.collection					
+					self.mTauJet.collection = self.Jet.collection				
 					if (list["bm"][0] > list["tm"][0]):
 						self.mTauboostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list["bm"][1]]
 						self.mTauMuon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list["bm"][2]]
@@ -519,7 +527,7 @@ class ChannelCamilla(Module):
 					self.mTauTau.collection = []
 					self.mTauFatJet.collection = []
 					self.mTauJet.collection = []
-					self.out.fillBranch("tm",0)
+					self.out.fillBranch("mt",0)
 				
 				self.diTauboostedTau.fillBranches(self.out,"tt")
 				self.diTauTau.fillBranches(self.out,"tt")
@@ -549,15 +557,15 @@ class ChannelCamilla(Module):
 					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1 or self.Electron.collection.index(obj)==-1]
 					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1 or self.Muon.collection.index(obj)==-1]
 					self.out.fillBranch("channel",0)
-				elif Keymax == "bt":
-					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
-					self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list[Keymax][2]]
-					self.Muon.collection = []
-					self.Electron.collection = []
-					#print ("Channel = ",Keymax,"Tau collection length = ",len(self.Tau.collection))
-					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
-					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
-					self.out.fillBranch("channel",0)					
+#				elif Keymax == "bt":
+#					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
+#					self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list[Keymax][2]]
+#					self.Muon.collection = []
+#					self.Electron.collection = []
+#					#print ("Channel = ",Keymax,"Tau collection length = ",len(self.Tau.collection))
+#					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
+#					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
+#					self.out.fillBranch("channel",0)					
 
 				elif Keymax == "tt":
 					#self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==-1]
@@ -700,7 +708,7 @@ if __name__ == "__main__":
 
 
 	#fnames = ["/data/aloeliger/bbtautauAnalysis/2016/Data.root"]
-	fnames = glob.glob(args.inputLocation + "/RadionTohhtohtatahbb_M-1000*.root")  #making a list of input files
+	fnames = glob.glob(args.inputLocation + "/WZTo1L1Nu2Q_4f.root")  #making a list of input files
 	#outputDir = "/data/gparida/Background_Samples/bbtautauAnalysis/2016/{}_Channel".format(args.Channel)
 	outputDir = args.outputLocation
 	#outputDir = "."
