@@ -151,55 +151,89 @@ class ChannelCamilla(Module):
 			return False
 
 	def FatJetConeIsolation(self,CollectionObject):
-		isObj =""
+		#isObj =""
 		obj1 = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 		obj2 = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)	
 		obj1.SetPtEtaPhiM(CollectionObject.pt,CollectionObject.eta,CollectionObject.phi,CollectionObject.mass)
-		for fatjet in self.FatJet.collection:
-			obj2.SetPtEtaPhiM(fatjet.pt,fatjet.eta,fatjet.phi,fatjet.mass)
-			deltaR = obj1.DeltaR(obj2)
-			if deltaR <= 0.8:
-				isObj = "bad"
-				break
-		
-		if isObj != "bad":
+
+		fatjet = self.FatJet.collection[0]
+		obj2.SetPtEtaPhiM(fatjet.pt,fatjet.eta,fatjet.phi,fatjet.mass)
+		deltaR = obj1.DeltaR(obj2)
+		if deltaR <= 0.8:
 			return True
 		else:
-			return False
+			return False	
+
+
+		#for fatjet in self.FatJet.collection:
+		#	obj2.SetPtEtaPhiM(fatjet.pt,fatjet.eta,fatjet.phi,fatjet.mass)
+		#	deltaR = obj1.DeltaR(obj2)
+		#	if deltaR <= 0.8:
+		#		isObj = "bad"
+		#		break
+		#
+		#if isObj != "bad":
+		#	return True
+		#else:
+		#	return False
 	
 	def JetFatJetIsolation(self,CollectionObject):
-		isObj =""
+		#isObj =""
 		Jet = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 		bigJet = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 		Jet.SetPtEtaPhiM(CollectionObject.pt,CollectionObject.eta,CollectionObject.phi,CollectionObject.mass)
-		for fatjet in self.FatJet.collection:
-			bigJet.SetPtEtaPhiM(fatjet.pt,fatjet.eta,fatjet.phi,fatjet.mass)
-			deltaR = Jet.DeltaR(bigJet)
-			if deltaR <= 1.2:
-				isObj = "bad"
-				break
-		
-		if isObj != "bad":
+
+		fatjet = self.FatJet.collection[0]
+		bigJet.SetPtEtaPhiM(fatjet.pt,fatjet.eta,fatjet.phi,fatjet.mass)
+		deltaR = Jet.DeltaR(bigJet)
+		if deltaR <= 1.2:
 			return True
 		else:
 			return False
 
+
+
+
+		#for fatjet in self.FatJet.collection:
+		#	bigJet.SetPtEtaPhiM(fatjet.pt,fatjet.eta,fatjet.phi,fatjet.mass)
+		#	deltaR = Jet.DeltaR(bigJet)
+		#	if deltaR <= 1.2:
+		#		isObj = "bad"
+		#		break
+		#
+		#if isObj != "bad":
+		#	return True
+		#else:
+		#	return False
+
 	def FatJetTauOverlap(self,CollectionObject):
-		isObj =""
+		#isObj =""
 		bigJet = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 		tau = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 		tau.SetPtEtaPhiM(CollectionObject.pt,CollectionObject.eta,CollectionObject.phi,CollectionObject.mass)
-		for fatjet in self.FatJet.collection:
-			bigJet.SetPtEtaPhiM(fatjet.pt,fatjet.eta,fatjet.phi,fatjet.mass)
-			deltaR = tau.DeltaR(bigJet)
-			if deltaR <= 1.5:
-				isObj = "bad"
-			break
-		
-		if isObj != "bad":
-			return True
-		else:
+
+		fatjet = self.FatJet.collection[0]
+		bigJet.SetPtEtaPhiM(fatjet.pt,fatjet.eta,fatjet.phi,fatjet.mass)
+
+		deltaR = tau.DeltaR(bigJet)
+		if deltaR <= 1.5:
 			return False
+		else:
+			return True
+
+		
+
+		#for fatjet in self.FatJet.collection:
+		#	bigJet.SetPtEtaPhiM(fatjet.pt,fatjet.eta,fatjet.phi,fatjet.mass)
+		#	deltaR = tau.DeltaR(bigJet)
+		#	if deltaR <= 1.5:
+		#		isObj = "bad"
+		#	break
+		#
+		#if isObj != "bad":
+		#	return True
+		#else:
+		#	return False
 
 		
 	
@@ -219,6 +253,8 @@ class ChannelCamilla(Module):
 			return True
 		else:
 			return False	
+
+
 	def MuonTauOverlap(self,CollectionObject):
 		isObj =""
 		tau = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
@@ -254,19 +290,29 @@ class ChannelCamilla(Module):
 		
 		return (combinedPt,index1,index2)
 	
-	def ElectronIsolationCut(self,tau,ele): #passing the inidivial eletrons from the collection to apply the correction
+	def ElectronIsolationCut(self,tau,ele,tag): #passing the inidivial eletrons from the collection to apply the correction
 		isTau = ""
 		isolationCut = 0.0
-		deltaR = (tau.p4()).DeltaR(ele.p4())
-		leadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
-		subleadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
-		subsubleadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
+
 		if abs(ele.eta) <= 1.479:
 			isolationCut = 0.175
 		elif (abs(ele.eta) > 1.479) and (abs(ele.eta) <= 2.5):
 			isolationCut = 0.159
 		else:
 			return False
+
+		if (tag == "te"):
+			if ((ele.pfRelIso03_all) < isolationCut):
+				return True
+			else:
+				return False
+		
+
+		deltaR = (tau.p4()).DeltaR(ele.p4())
+		leadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
+		subleadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
+		subsubleadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
+
 
 		if deltaR <= 0.4:
 			isTau = "close"
@@ -305,13 +351,22 @@ class ChannelCamilla(Module):
 			else:
 				return False
 	
-	def MuonIsolationCut (self,tau,muo):
+	def MuonIsolationCut (self,tau,muo,tag):
 		isTau = ""
 		deltaR = (tau.p4()).DeltaR(muo.p4())
 		isolationCut = 0.25
+
+		if (tag == "tm"):
+			if ((muo.pfRelIso04_all) <  isolationCut):
+				return True
+			else:
+				return False
+
 		leadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 		subleadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 		subsubleadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
+
+
 		if deltaR <= 0.4:
 			isTau = "close"
 		if isTau == "close":
@@ -360,12 +415,12 @@ class ChannelCamilla(Module):
 			return (combinedPt,index1,index2)
 		for i in range(len(col1)):
 			for j in range(len(col2)):
-				if tag == "be":
-					if not self.ElectronIsolationCut(col1[i],col2[j]):
+				if (tag == "be" or tag == "te"):
+					if not self.ElectronIsolationCut(col1[i],col2[j],tag):
 						continue
 				
-				elif tag == "bm":
-					if not self.MuonIsolationCut(col1[i],col2[j]):
+				elif (tag == "bm" or tag =="tm"):
+					if not self.MuonIsolationCut(col1[i],col2[j],tag):
 						continue
 
 				sumFourVector = col1[i].p4() + col2[j].p4()
@@ -394,14 +449,14 @@ class ChannelCamilla(Module):
 		
 		self.Tau.setupCollection(event)
 		#self.Tau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idDeepTau2017v2p1VSjet & 1 == 1))  #Deeptau ID for the standard Taus loosest WP
-		self.Tau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3))
+		self.Tau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idDeepTau2017v2p1VSjet & 1 == 1))
 
 
 		self.boostedTau.setupCollection(event)
 		#self.boostedTau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idMVAnewDM2017v2 & 2 == 2)) # VLoose ID for newMVA for boosted Taus - but use oldMVA weight
-		self.boostedTau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3))
+		self.boostedTau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idMVAnewDM2017v2 & 1 == 1))
 
-		self.Tau.collection =  filter(self.HPStauVeto,self.Tau.collection) #HPS veto applied - if a HPS tau and a boosted Tau are on top of each other then throw away the HPS Tau
+		#self.Tau.collection =  filter(self.HPStauVeto,self.Tau.collection) #HPS veto applied - if a HPS tau and a boosted Tau are on top of each other then throw away the HPS Tau
 
 		self.FatJet.setupCollection(event)
 		try:
@@ -418,8 +473,6 @@ class ChannelCamilla(Module):
 		#self.Electron.collection = filter(self.Electron.relativeIso,self.Electron.collection)
 
 		self.Muon.setupCollection(event)
-		#self.Muon.apply_cut(lambda x: x.pt > 10 and x.mvaId >= 1 and ((x.TauCorrPfIso/x.pt) < 0.25))
-		#self.Muon.apply_cut(lambda x: x.pt > 10 and x.mvaId >= 1)
 		self.Muon.apply_cut(lambda x: x.pt > 10 and x.looseId)
 		#self.Muon.apply_cut(lambda x: x.pt > 10 and x.mvaId >= 1 and ((x.pfRelIso03_all/x.pt) < 0.25))
 
@@ -441,19 +494,7 @@ class ChannelCamilla(Module):
 		self.boostedTau.collection = filter(self.ElectronTauOverlap,self.boostedTau.collection)
 		self.boostedTau.collection = filter(self.MuonTauOverlap,self.boostedTau.collection)
 
-		# With the collection veto applied, now apply the lepton isolation
-
-		#Removing the lepton isolation for the checks
-		#self.Electron.collection = filter(self.applyElectronIsolation, self.Electron.collection)
-		#self.Muon.collection = filter(self.applyMuonIsolation,self.Muon.collection)
-
-
-
-		#print ("before channel","boostedTauLength = ",len(self.boostedTau.collection),"Tau length = ",len(self.Tau.collection))
-
-		#if (len(self.FatJet.collection)==1 and len(self.Jet.collection)==0):
-		#print ("Jet type = ", type(self.Jet))
-		if (len(self.FatJet.collection)==1):
+		if (len(self.FatJet.collection)>0):
 			list["bb"]=self.selfPairing(self.boostedTau.collection)
 			list["tt"]=self.selfPairing(self.Tau.collection)
 			#list["bt"]=self.crossPairing(self.boostedTau.collection,self.Tau.collection,"bt")
