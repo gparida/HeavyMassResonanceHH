@@ -132,7 +132,7 @@ class ChannelCamilla(Module):
 			file.write("The Bad events for this file "+str(self.filename)+" is "+str(self.countBadevents))
 			file.close()	
 	
-
+	#Not used for now
 	def HPStauVeto(self,tauCollectionObject):
 		isTau =""
 		tau1 = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
@@ -150,7 +150,7 @@ class ChannelCamilla(Module):
 		else:
 			return False
 
-	def FatJetConeIsolation(self,CollectionObject):
+	def FatJetConeIsolation(self,CollectionObject): # Function used by electron and muon
 		#isObj =""
 		obj1 = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 		obj2 = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)	
@@ -177,6 +177,7 @@ class ChannelCamilla(Module):
 		#else:
 		#	return False
 	
+	#Used to filter AK4 Jets
 	def JetFatJetIsolation(self,CollectionObject):
 		#isObj =""
 		Jet = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
@@ -206,6 +207,7 @@ class ChannelCamilla(Module):
 		#else:
 		#	return False
 
+	#Used to filter Taus taus
 	def FatJetTauOverlap(self,CollectionObject):
 		#isObj =""
 		bigJet = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
@@ -445,16 +447,17 @@ class ChannelCamilla(Module):
 
 		#Select the AK4 Jets and keep choose Jets with Tight DeepJet ID
 		self.Jet.setupCollection(event)
+		#Apply a tight ID for ak4 jet - but not using it in for veto yet
 		self.Jet.apply_cut(lambda x: (x.pt > 20) and (x.btagDeepB >= 0.8767))
 		
 		self.Tau.setupCollection(event)
 		#self.Tau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idDeepTau2017v2p1VSjet & 1 == 1))  #Deeptau ID for the standard Taus loosest WP
-		self.Tau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idDeepTau2017v2p1VSjet & 1 == 1))
+		self.Tau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idDeepTau2017v2p1VSjet & 1 == 1)) #VVVLoose
 
 
 		self.boostedTau.setupCollection(event)
 		#self.boostedTau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idMVAnewDM2017v2 & 2 == 2)) # VLoose ID for newMVA for boosted Taus - but use oldMVA weight
-		self.boostedTau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idMVAnewDM2017v2 & 1 == 1))
+		self.boostedTau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idMVAnewDM2017v2 & 1 == 1)) # VVLoose
 
 		#self.Tau.collection =  filter(self.HPStauVeto,self.Tau.collection) #HPS veto applied - if a HPS tau and a boosted Tau are on top of each other then throw away the HPS Tau
 
@@ -476,7 +479,7 @@ class ChannelCamilla(Module):
 		self.Muon.apply_cut(lambda x: x.pt > 10 and x.looseId)
 		#self.Muon.apply_cut(lambda x: x.pt > 10 and x.mvaId >= 1 and ((x.pfRelIso03_all/x.pt) < 0.25))
 
-		#filter Objects to remove those within the fatjet cone (0.8 is the distance measure)
+		#filter Objects to remove those within the fatjet cone - only the leading FatJet Considered (0.8 is the distance measure)
 		self.Electron.collection = filter(self.FatJetConeIsolation,self.Electron.collection)
 		self.Muon.collection = filter(self.FatJetConeIsolation,self.Muon.collection)
 
@@ -704,6 +707,7 @@ if __name__ == "__main__":
 	parser.add_argument('--outputLocation',help="enter the path where yu want the output files to be stored",default ="")
 	parser.add_argument('--ncores',help ="number of cores for parallel processing", default=1)
 	parser.add_argument('--postfix',help="string at the end of output file names", default="")
+	parser.add_argument('--year',help='specify the run - to make sure right triggers are used',choices=['2016','2016APV','2017','2018'])
 	#parser.add_argument('--bTauid',help="ID for the boosted taus",choices=[""],required=True)
 	#parser.add_argument('--Tauid',help="ID for the hps taus",required=True)	
 	args = parser.parse_args()
@@ -736,7 +740,7 @@ if __name__ == "__main__":
 
 	#Define Eevnt Selection - all those to be connected by or
 
-	eventSelectionOR = [#"HLT_PFMETNoMu90_PFMHTNoMu90_IDTight",
+	eventSelectionOR_2016 = [#"HLT_PFMETNoMu90_PFMHTNoMu90_IDTight",
             			"HLT_PFMETNoMu110_PFMHTNoMu110_IDTight",
             			"HLT_PFMETNoMu120_PFMHTNoMu120_IDTight",
             			"HLT_MonoCentralPFJet80_PFMETNoMu120_PFMHTNoMu120_IDTight",
@@ -746,6 +750,15 @@ if __name__ == "__main__":
             			"HLT_PFMET170_HBHECleaned",
             			"HLT_PFMET170_HBHE_BeamHaloCleaned"]
 	
+	eventSelectionOR_2016APV = ["HLT_PFMETNoMu90_PFMHTNoMu90_IDTight",
+            			"HLT_PFMETNoMu110_PFMHTNoMu110_IDTight",
+            			"HLT_PFMETNoMu120_PFMHTNoMu120_IDTight",
+            			"HLT_MonoCentralPFJet80_PFMETNoMu120_PFMHTNoMu120_IDTight",
+            			"HLT_PFMET110_PFMHT110_IDTight",
+            			"HLT_PFMET120_PFMHT120_IDTight",
+            			#"HLT_PFMET170_NoiseCleaned",
+            			"HLT_PFMET170_HBHECleaned"]
+            			#"HLT_PFMET170_HBHE_BeamHaloCleaned"]	
 
 
 	#fnames = ["/data/aloeliger/bbtautauAnalysis/2016/Data.root"]
@@ -755,8 +768,13 @@ if __name__ == "__main__":
 	#outputDir = "."
 	outputbranches = "keep_and_drop.txt"
 	cut1 = "&&".join(eventSelectionAND)
-	cut2 = "||".join(eventSelectionOR)
 	cut3 = "&&".join(eventSelectionANDData)
+
+	if args.year == '2016':
+		cut2 = "||".join(eventSelectionOR_2016)
+	elif args.year == '2016APV':
+		cut2 = "||".join(eventSelectionOR_2016APV)	
+	
 	cuts = "("+cut1+")"+"&&"+"("+cut2+")"
 	cutsData = "("+cut3+")"+"&&"+"("+cut2+")"
 	print ("cuts = ",cuts)
