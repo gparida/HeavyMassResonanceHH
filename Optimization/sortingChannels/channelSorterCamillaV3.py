@@ -23,7 +23,7 @@ import os
 
 ROOT.PyConfig.IgnoreCommandLineOptions = True  #Find out what does this do ?
 
-class ChannelCamilla(Module):
+class ChannelCamillaV(Module):
 	def __init__(self,filename):
 		print ("Running the channel sorter Module")
 		print ("processing file ",filename)
@@ -247,7 +247,7 @@ class ChannelCamilla(Module):
 		for electron in self.Electron.collection:
 			lepton.SetPtEtaPhiM(electron.pt,electron.eta,electron.phi,electron.mass)
 			deltaR = tau.DeltaR(lepton)
-			if deltaR < 0.05:
+			if deltaR <= 0.05:
 				isObj = "bad"
 				break
 		
@@ -265,7 +265,7 @@ class ChannelCamilla(Module):
 		for muon in self.Muon.collection:
 			lepton.SetPtEtaPhiM(muon.pt,muon.eta,muon.phi,muon.mass)
 			deltaR = tau.DeltaR(lepton)
-			if deltaR < 0.05:
+			if deltaR <= 0.05:
 				isObj = "bad"
 				break
 		
@@ -283,9 +283,9 @@ class ChannelCamilla(Module):
 			return (combinedPt,index1,index2)
 		for i in range(len(col1)):
 			for j in range(i+1,len(col1)):
-				if ((col1[i].p4()).DeltaR(col1[j].p4()) < 0.05):
+				sumFourVector = col1[i].p4() + col1[j].p4()
+				if ((col1[i].p4()).DeltaR(col1[j].p4()) <= 0.05):
 					continue
-				sumFourVector = col1[i].p4() + col1[j].p4()	
 				pt = sumFourVector.Pt()
 				if pt >= combinedPt:
 					combinedPt = pt
@@ -318,7 +318,7 @@ class ChannelCamilla(Module):
 		subsubleadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 
 
-		if deltaR < 0.3:
+		if deltaR <= 0.4:
 			isTau = "close"
 		if isTau == "close":
 			leadingMatch.SetPtEtaPhiM(tau.LeadingElectronPt,tau.LeadingElectronEta,tau.LeadingElectronPhi,tau.LeadingElectronM)
@@ -371,7 +371,7 @@ class ChannelCamilla(Module):
 		subsubleadingMatch = ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
 
 
-		if deltaR < 0.4:
+		if deltaR <= 0.4:
 			isTau = "close"
 		if isTau == "close":
 			leadingMatch.SetPtEtaPhiM(tau.LeadingMuonPt,tau.LeadingMuonEta,tau.LeadingMuonPhi,tau.LeadingMuonM)
@@ -509,12 +509,17 @@ class ChannelCamilla(Module):
 
 		if (len(self.FatJet.collection)>0):
 			list["bb"]=self.selfPairing(self.boostedTau.collection)
+			#list["bb"]=sorted(list["bb"], key=lambda tup: tup[0], reverse=True)
 			list["tt"]=self.selfPairing(self.Tau.collection)
-			#list["bt"]=self.crossPairing(self.boostedTau.collection,self.Tau.collection,"bt")
+			#list["tt"]=sorted(list["tt"], key=lambda tup: tup[0], reverse=True)
 			list["be"]=self.crossPairing(self.boostedTau.collection,self.Electron.collection,"be")
+			#list["be"]=sorted(list["be"], key=lambda tup: tup[0], reverse=True)
 			list["bm"]=self.crossPairing(self.boostedTau.collection,self.Muon.collection,"bm")
+			#list["bm"]=sorted(list["bm"], key=lambda tup: tup[0], reverse=True)
 			list["te"]=self.crossPairing(self.Tau.collection,self.Electron.collection,"te")
+			#list["te"]=sorted(list["te"], key=lambda tup: tup[0], reverse=True)
 			list["tm"]=self.crossPairing(self.Tau.collection,self.Muon.collection,"tm")
+			#list["tm"]=sorted(list["tm"], key=lambda tup: tup[0], reverse=True)
 
 			#print (list)
 
@@ -522,24 +527,47 @@ class ChannelCamilla(Module):
 			
 
 			if (list[Keymax][0]>0):
+				finalChannel = ""
+				tauClone = self.Tau.collection
+				btauClone = self.boostedTau.collection
+				eleClone = self.Electron.collection
+				muClone = self.Muon.collection
+				if (list["bm"][0]> 0 or list["tm"][0]>0):
+					self.out.fillBranch("mt",1)
+					self.mTauFatJet.collection=self.FatJet.collection
+					self.mTauJet.collection = self.Jet.collection				
+					if (list["bm"][0] >= list["tm"][0]):
+						self.mTauboostedTau.collection = [obj for obj in btauClone if btauClone.index(obj)==list["bm"][1]]
+						self.mTauMuon.collection = [obj for obj in muClone if muClone.index(obj)==list["bm"][2]]
+						self.mTauTau.collection =[]
 
-				if (list["bb"][0]> 0 or list["tt"][0]>0):
-					self.out.fillBranch("tt",1)
-					self.diTauFatJet.collection = self.FatJet.collection
-					self.diTauJet.collection=self.Jet.collection
-					if (list["bb"][0] >= list["tt"][0]):
-						self.diTauboostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list["bb"][1] or self.boostedTau.collection.index(obj)==list["bb"][2]]
-						self.diTauTau.collection=[]
+						self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list["bm"][1]]
+						self.Tau.collection = []
+						self.Electron.collection = []
+						self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list["bm"][2]]
+						self.out.fillBranch("channel",2)		
+						finalChannel = "assigned"				
+					elif (list["bm"][0] < list["tm"][0]):
+						self.mTauTau.collection =  [obj for obj in tauClone if tauClone.index(obj)==list["tm"][1]]
+						self.mTauMuon.collection = [obj for obj in muClone if muClone.index(obj)==list["tm"][2]]
+						self.mTauboostedTau.collection = []
 
-					elif(list["bb"][0] < list["tt"][0]):
-						self.diTauTau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list["tt"][1] or self.Tau.collection.index(obj)==list["tt"][2]]
-						self.diTauboostedTau.collection=[]
+						#self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==-1]
+						self.boostedTau.collection = []
+						self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list["tm"][1]]
+						#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
+						self.Electron.collection = []
+						#print ("Channel = ",Keymax,"Tau collection length = ",len(self.Tau.collection))
+						self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list["tm"][2]]
+						self.out.fillBranch("channel",2)
+						finalChannel = "assigned"
 				else:
-						self.diTauboostedTau.collection=[]
-						self.diTauTau.collection=[]
-						self.diTauFatJet.collection=[]
-						self.diTauJet.collection=[]
-						self.out.fillBranch("tt",0)
+					self.mTauboostedTau.collection = []
+					self.mTauMuon.collection = []
+					self.mTauTau.collection = []
+					self.mTauFatJet.collection = []
+					self.mTauJet.collection = []
+					self.out.fillBranch("mt",0)				
 
 				if (list["be"][0]> 0 or list["te"][0]>0):
 					#print ("momentum = ",list["be"][0],list["te"][0])
@@ -547,14 +575,29 @@ class ChannelCamilla(Module):
 					self.eTauFatJet.collection=self.FatJet.collection
 					self.eTauJet.collection = self.Jet.collection
 					if (list["be"][0] >= list["te"][0]):
-						self.eTauboostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list["be"][1]]
-						self.eTauElectron.collection= [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==list["be"][2]]
+						self.eTauboostedTau.collection = [obj for obj in btauClone if btauClone.index(obj)==list["be"][1]]
+						self.eTauElectron.collection= [obj for obj in eleClone if eleClone.index(obj)==list["be"][2]]
 						self.eTauTau.collection=[]
+						if finalChannel != "assigned":
+							self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list["be"][1]]
+							self.Tau.collection = []
+							self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==list["be"][2]]
+							self.Muon.collection = []
+							self.out.fillBranch("channel",1)
+							finalChannel = "assigned"
+
 
 					elif(list["be"][0] < list["te"][0]):
-						self.eTauTau.collection =[obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list["te"][1]]
-						self.eTauElectron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==list["te"][2]]
+						self.eTauTau.collection =[obj for obj in tauClone if tauClone.index(obj)==list["te"][1]]
+						self.eTauElectron.collection = [obj for obj in eleClone if eleClone.index(obj)==list["te"][2]]
 						self.eTauboostedTau.collection=[]
+						if finalChannel != "assigned":
+							self.boostedTau.collection = []
+							self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list["te"][1]]
+							self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==list["te"][2]]
+							self.Muon.collection = []
+							self.out.fillBranch("channel",1)
+							finalChannel = "assigned"
 
 				else:
 					self.eTauTau.collection=[]
@@ -564,25 +607,48 @@ class ChannelCamilla(Module):
 					self.eTauJet.collection=[]
 					self.out.fillBranch("et",0)
 
-				if (list["bm"][0]> 0 or list["tm"][0]>0):
-					self.out.fillBranch("mt",1)
-					self.mTauFatJet.collection=self.FatJet.collection
-					self.mTauJet.collection = self.Jet.collection				
-					if (list["bm"][0] >= list["tm"][0]):
-						self.mTauboostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list["bm"][1]]
-						self.mTauMuon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list["bm"][2]]
-						self.mTauTau.collection =[]
-					elif (list["bm"][0] < list["tm"][0]):
-						self.mTauTau.collection =  [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list["tm"][1]]
-						self.mTauMuon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list["tm"][2]]
-						self.mTauboostedTau.collection = []
+				if (list["bb"][0]> 0 or list["tt"][0]>0):
+					#print ("Assiging DiTau")
+					self.out.fillBranch("tt",1)
+					self.diTauFatJet.collection = self.FatJet.collection
+					self.diTauJet.collection=self.Jet.collection
+					#print (list["bb"][0],list["tt"][0])
+					if (list["bb"][0] >= list["tt"][0]):
+						#print ("Fill Collection")
+						self.diTauboostedTau.collection = [obj for obj in btauClone if btauClone.index(obj)==list["bb"][1] or btauClone.index(obj)==list["bb"][2]]
+						self.diTauTau.collection=[]
+						if finalChannel != "assigned":
+							self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list["bb"][1] or self.boostedTau.collection.index(obj)==list["bb"][2]]
+							self.Tau.collection=[]
+							self.Muon.collection=[]
+							self.Electron.collection=[]
+							self.out.fillBranch("channel",0)
+							finalChannel = "assigned"
+
+					elif (list["bb"][0] < list["tt"][0]):
+						#print ("Fill Tau Collection")
+						#print (list["tt"][1],list["tt"][2])
+						self.diTauTau.collection = [obj for obj in tauClone if tauClone.index(obj)==list["tt"][1] or tauClone.index(obj)==list["tt"][2]]
+						#print ("length of diTau after assigning = ",len(self.diTauTau.collection),len(self.Tau.collection))
+						self.diTauboostedTau.collection=[]
+						if finalChannel != "assigned":
+							self.boostedTau.collection = []
+							self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list["tt"][1] or self.Tau.collection.index(obj)==list["tt"][2]]
+							self.Electron.collection = []
+							self.Muon.collection = []
+							self.out.fillBranch("channel",0)
+							finalChannel = "assigned"
+
 				else:
-					self.mTauboostedTau.collection = []
-					self.mTauMuon.collection = []
-					self.mTauTau.collection = []
-					self.mTauFatJet.collection = []
-					self.mTauJet.collection = []
-					self.out.fillBranch("mt",0)
+					#print ("ELSE statement executed")
+					self.diTauboostedTau.collection=[]
+					self.diTauTau.collection=[]
+					self.diTauFatJet.collection=[]
+					self.diTauJet.collection=[]
+					self.out.fillBranch("tt",0)
+				
+				if finalChannel == "":
+					print("This also happens")
 				
 				self.diTauboostedTau.fillBranches(self.out,"tt")
 				self.diTauTau.fillBranches(self.out,"tt")
@@ -600,78 +666,6 @@ class ChannelCamilla(Module):
 				self.mTauTau.fillBranches(self.out,"mt")
 				self.mTauFatJet.fillBranches(self.out,"mt")
 				self.mTauJet.fillBranches(self.out,"mt")
-
-
-				#print(Keymax)
-				if Keymax == "bb":
-					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1] or self.boostedTau.collection.index(obj)==list[Keymax][2]]
-					#self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==-1 or self.Tau.collection.index(obj)==-1]
-					self.Tau.collection=[]
-					self.Muon.collection=[]
-					self.Electron.collection=[]
-					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1 or self.Electron.collection.index(obj)==-1]
-					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1 or self.Muon.collection.index(obj)==-1]
-					self.out.fillBranch("channel",0)
-#				elif Keymax == "bt":
-#					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
-#					self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list[Keymax][2]]
-#					self.Muon.collection = []
-#					self.Electron.collection = []
-#					#print ("Channel = ",Keymax,"Tau collection length = ",len(self.Tau.collection))
-#					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
-#					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
-#					self.out.fillBranch("channel",0)					
-
-				elif Keymax == "tt":
-					#self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==-1]
-					self.boostedTau.collection = []
-					self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list[Keymax][1] or self.Tau.collection.index(obj)==list[Keymax][2]]
-					self.Electron.collection = []
-					self.Muon.collection = []
-					#print ("Channel = ",Keymax,"Tau collection length = ",len(self.Tau.collection))
-					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
-					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
-					self.out.fillBranch("channel",0)
-
-				elif Keymax == "te":
-					#self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==-1]
-					self.boostedTau.collection = []
-					self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list[Keymax][1]]
-					self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==list[Keymax][2]]
-					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
-					#print ("Channel = ",Keymax,"Tau collection length = ",len(self.Tau.collection))
-					self.Muon.collection = []
-					self.out.fillBranch("channel",1)
-				
-				elif Keymax == "be":
-					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
-					#self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==-1]
-					self.Tau.collection = []
-					self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==list[Keymax][2]]
-					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
-					self.Muon.collection = []
-					self.out.fillBranch("channel",1)
-
-				elif Keymax == "tm":
-					#self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==-1]
-					self.boostedTau.collection = []
-					self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list[Keymax][1]]
-					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
-					self.Electron.collection = []
-					#print ("Channel = ",Keymax,"Tau collection length = ",len(self.Tau.collection))
-					self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list[Keymax][2]]
-					self.out.fillBranch("channel",2)
-
-				elif Keymax == "bm":
-					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
-					#self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==-1]
-					self.Tau.collection = []
-					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
-					self.Electron.collection = []
-					self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list[Keymax][2]]
-					self.out.fillBranch("channel",2)
-				else:
-					print ("This also happens")
 				
 				self.Tau.fillBranches(self.out)
 				self.FatJet.fillBranches(self.out)
@@ -692,7 +686,7 @@ class ChannelCamilla(Module):
 
 
 def call_postpoc(files):
-		letsSortChannels = lambda: ChannelCamilla(filename)
+		letsSortChannels = lambda: ChannelCamillaV(filename)
 		tauOdering = lambda: mergeTauCamilla(filename)
 		tauOdering2 = lambda: mergeTauPart2(filename)
 		visibleM = lambda:VisibleMassCamilla()
@@ -808,10 +802,8 @@ if __name__ == "__main__":
 			call_postpoc(arr)
 	
 	else:
-		try:
-			pool = np.Pool(int(args.ncores))
-			#with np.Pool(object,ncores) as pool:
-			print ("list", argList)
-			res=pool.map(call_postpoc, argList)
-		except:
-			print ("Whattttttttttttttttttt")
+		pool = np.Pool(int(args.ncores))
+		#with np.Pool(object,ncores) as pool:
+		print ("list", argList)
+		res=pool.map(call_postpoc, argList)
+	

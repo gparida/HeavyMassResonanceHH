@@ -14,66 +14,66 @@ args = parser.parse_args()
 #rejected = 0
 #rejected_one = 0
 
-tt_higgspt_pass = [ROOT.TH1F("tt_higgspt_pass_{}".format(str(i)),"tt_higgspt_pass_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-tt_higgspt_pass_b = [ROOT.TH1F("tt_higgspt_pass_b_{}".format(str(i)),"tt_higgspt_pass_b_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-#tt_higgspt_total = [ROOT.TH1F("tt_higgspt_total_{}".format(str(i)),"tt_higgspt_total_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-tt_higgspt_total = ROOT.TH1F("tt_higgspt_total","tt_higgspt_total",104,  400, 3000)
+tt_higgspt_pass = [ROOT.TH1F("tt_higgspt_pass_{}".format(str(i)),"tt_higgspt_pass_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+tt_higgspt_pass_b = [ROOT.TH1F("tt_higgspt_pass_b_{}".format(str(i)),"tt_higgspt_pass_b_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+#tt_higgspt_total = [ROOT.TH1F("tt_higgspt_total_{}".format(str(i)),"tt_higgspt_total_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+tt_higgspt_total = ROOT.TH1F("tt_higgspt_total","tt_higgspt_total",24,  400, 1000)
 
-tt_taupt_pass = [ROOT.TH1F("tt_taupt_pass_{}".format(str(i)),"tt_taupt_pass_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
-tt_taupt_pass_b = [ROOT.TH1F("tt_taupt_pass_b_{}".format(str(i)),"tt_taupt_pass_b_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
-#tt_higgspt_total = [ROOT.TH1F("tt_higgspt_total_{}".format(str(i)),"tt_higgspt_total_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
+tt_taupt_pass = [ROOT.TH1F("tt_taupt_pass_{}".format(str(i)),"tt_taupt_pass_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
+tt_taupt_pass_b = [ROOT.TH1F("tt_taupt_pass_b_{}".format(str(i)),"tt_taupt_pass_b_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
+#tt_higgspt_total = [ROOT.TH1F("tt_higgspt_total_{}".format(str(i)),"tt_higgspt_total_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
 tt_taupt_total = ROOT.TH1F("tt_taupt_total","tt_taupt_total",80,  0, 2000)
 
 
-tt_delR_pass = [ROOT.TH1F("tt_delR_pass_{}".format(str(i)),"tt_delR_pass_{}".format(str(i)), 40, 0, 2) for i in range(7)]
-tt_delR_pass_b = [ROOT.TH1F("tt_delR_pass_b_{}".format(str(i)),"tt_delR_pass_b_{}".format(str(i)), 40, 0, 2) for i in range(7)]
-#tt_delR_total = [ROOT.TH1F("tt_delR_total_{}".format(str(i)),"tt_delR_total_{}".format(str(i)), 40, 0, 2) for i in range(7)]
+tt_delR_pass = [ROOT.TH1F("tt_delR_pass_{}".format(str(i)),"tt_delR_pass_{}".format(str(i)), 40, 0, 2) for i in range(1)]
+tt_delR_pass_b = [ROOT.TH1F("tt_delR_pass_b_{}".format(str(i)),"tt_delR_pass_b_{}".format(str(i)), 40, 0, 2) for i in range(1)]
+#tt_delR_total = [ROOT.TH1F("tt_delR_total_{}".format(str(i)),"tt_delR_total_{}".format(str(i)), 40, 0, 2) for i in range(1)]
 tt_delR_total = ROOT.TH1F("tt_delR_total","tt_delR_total",40, 0, 2)
 
 
 
-tt_one_higgspt_pass = [ROOT.TH1F("tt_one_higgspt_pass_{}".format(str(i)),"tt_one_higgspt_pass_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-tt_one_higgspt_pass_b = [ROOT.TH1F("tt_one_higgspt_pass_b_{}".format(str(i)),"tt_one_higgspt_pass_b_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-#tt_one_higgspt_total = ROOT.TH1F("tt_one_higgspt_total","tt_one_higgspt_total",104,  400, 3000)
+tt_one_higgspt_pass = [ROOT.TH1F("tt_one_higgspt_pass_{}".format(str(i)),"tt_one_higgspt_pass_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+tt_one_higgspt_pass_b = [ROOT.TH1F("tt_one_higgspt_pass_b_{}".format(str(i)),"tt_one_higgspt_pass_b_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+#tt_one_higgspt_total = ROOT.TH1F("tt_one_higgspt_total","tt_one_higgspt_total",24,  400, 1000)
 
-tt_one_delR_pass = [ROOT.TH1F("tt_one_delR_pass_{}".format(str(i)),"tt_one_delR_pass_{}".format(str(i)), 40, 0, 2) for i in range(7)]
-tt_one_delR_pass_b = [ROOT.TH1F("tt_one_delR_pass_b_{}".format(str(i)),"tt_one_delR_pass_b_{}".format(str(i)), 40, 0, 2) for i in range(7)]
+tt_one_delR_pass = [ROOT.TH1F("tt_one_delR_pass_{}".format(str(i)),"tt_one_delR_pass_{}".format(str(i)), 40, 0, 2) for i in range(1)]
+tt_one_delR_pass_b = [ROOT.TH1F("tt_one_delR_pass_b_{}".format(str(i)),"tt_one_delR_pass_b_{}".format(str(i)), 40, 0, 2) for i in range(1)]
 
-tt_one_taupt_pass = [ROOT.TH1F("tt_one_taupt_pass_{}".format(str(i)),"tt_one_taupt_pass_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
-tt_one_taupt_pass_b = [ROOT.TH1F("tt_one_taupt_pass_b_{}".format(str(i)),"tt_one_taupt_pass_b_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
+tt_one_taupt_pass = [ROOT.TH1F("tt_one_taupt_pass_{}".format(str(i)),"tt_one_taupt_pass_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
+tt_one_taupt_pass_b = [ROOT.TH1F("tt_one_taupt_pass_b_{}".format(str(i)),"tt_one_taupt_pass_b_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
 
 
-et_higgspt_pass = [ROOT.TH1F("et_higgspt_pass_{}".format(str(i)),"et_higgspt_pass_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-et_higgspt_pass_b = [ROOT.TH1F("et_higgspt_pass_b_{}".format(str(i)),"et_higgspt_pass_b_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-#et_higgspt_total = [ROOT.TH1F("et_higgspt_total_{}".format(str(i)),"et_higgspt_total_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-et_higgspt_total = ROOT.TH1F("et_higgspt_total","et_higgspt_total",104,  400, 3000)
+et_higgspt_pass = [ROOT.TH1F("et_higgspt_pass_{}".format(str(i)),"et_higgspt_pass_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+et_higgspt_pass_b = [ROOT.TH1F("et_higgspt_pass_b_{}".format(str(i)),"et_higgspt_pass_b_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+#et_higgspt_total = [ROOT.TH1F("et_higgspt_total_{}".format(str(i)),"et_higgspt_total_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+et_higgspt_total = ROOT.TH1F("et_higgspt_total","et_higgspt_total",24,  400, 1000)
 
-et_taupt_pass = [ROOT.TH1F("et_taupt_pass_{}".format(str(i)),"et_taupt_pass_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
-et_taupt_pass_b = [ROOT.TH1F("et_taupt_pass_b_{}".format(str(i)),"et_taupt_pass_b_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
-#et_taupt_total = [ROOT.TH1F("et_taupt_total_{}".format(str(i)),"et_taupt_total_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
+et_taupt_pass = [ROOT.TH1F("et_taupt_pass_{}".format(str(i)),"et_taupt_pass_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
+et_taupt_pass_b = [ROOT.TH1F("et_taupt_pass_b_{}".format(str(i)),"et_taupt_pass_b_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
+#et_taupt_total = [ROOT.TH1F("et_taupt_total_{}".format(str(i)),"et_taupt_total_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
 et_taupt_total = ROOT.TH1F("et_taupt_total","et_taupt_total",80,  0, 2000)
 
 
-et_delR_pass = [ROOT.TH1F("et_delR_pass_{}".format(str(i)),"et_delR_pass_{}".format(str(i)), 40, 0, 2) for i in range(7)]
-et_delR_pass_b = [ROOT.TH1F("et_delR_pass_b_{}".format(str(i)),"et_delR_pass_b_{}".format(str(i)), 40, 0, 2) for i in range(7)]
-#et_delR_total = [ROOT.TH1F("et_delR_total_{}".format(str(i)),"et_delR_total_{}".format(str(i)), 40, 0, 2) for i in range(7)]
+et_delR_pass = [ROOT.TH1F("et_delR_pass_{}".format(str(i)),"et_delR_pass_{}".format(str(i)), 40, 0, 2) for i in range(1)]
+et_delR_pass_b = [ROOT.TH1F("et_delR_pass_b_{}".format(str(i)),"et_delR_pass_b_{}".format(str(i)), 40, 0, 2) for i in range(1)]
+#et_delR_total = [ROOT.TH1F("et_delR_total_{}".format(str(i)),"et_delR_total_{}".format(str(i)), 40, 0, 2) for i in range(1)]
 et_delR_total = ROOT.TH1F("et_delR_total","et_delR_total",40, 0, 2)
 
 
 
-mt_higgspt_pass = [ROOT.TH1F("mt_higgspt_pass_{}".format(str(i)),"mt_higgspt_pass_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-mt_higgspt_pass_b = [ROOT.TH1F("mt_higgspt_pass_b_{}".format(str(i)),"mt_higgspt_pass_b_{}".format(str(i)), 104,  400, 3000) for i in range(7)]
-#mt_higgspt_total = [ROOT.TH1F("mt_higgspt_total_{}".format(str(i)),"mt_higgspt_total_{}".format(str(i)),104,  400, 3000) for i in range(7)]
-mt_higgspt_total = ROOT.TH1F("mt_higgspt_total","mt_higgspt_total",104,  400, 3000)
+mt_higgspt_pass = [ROOT.TH1F("mt_higgspt_pass_{}".format(str(i)),"mt_higgspt_pass_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+mt_higgspt_pass_b = [ROOT.TH1F("mt_higgspt_pass_b_{}".format(str(i)),"mt_higgspt_pass_b_{}".format(str(i)), 24,  400, 1000) for i in range(1)]
+#mt_higgspt_total = [ROOT.TH1F("mt_higgspt_total_{}".format(str(i)),"mt_higgspt_total_{}".format(str(i)),24,  400, 1000) for i in range(1)]
+mt_higgspt_total = ROOT.TH1F("mt_higgspt_total","mt_higgspt_total",24,  400, 1000)
 
-mt_taupt_pass = [ROOT.TH1F("mt_taupt_pass_{}".format(str(i)),"mt_taupt_pass_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
-mt_taupt_pass_b = [ROOT.TH1F("mt_taupt_pass_b_{}".format(str(i)),"mt_taupt_pass_b_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
-#mt_taupt_total = [ROOT.TH1F("mt_taupt_total_{}".format(str(i)),"mt_taupt_total_{}".format(str(i)), 80,  0, 2000) for i in range(7)]
+mt_taupt_pass = [ROOT.TH1F("mt_taupt_pass_{}".format(str(i)),"mt_taupt_pass_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
+mt_taupt_pass_b = [ROOT.TH1F("mt_taupt_pass_b_{}".format(str(i)),"mt_taupt_pass_b_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
+#mt_taupt_total = [ROOT.TH1F("mt_taupt_total_{}".format(str(i)),"mt_taupt_total_{}".format(str(i)), 80,  0, 2000) for i in range(1)]
 mt_taupt_total = ROOT.TH1F("mt_taupt_total","mt_taupt_total",80,  0, 2000)
 
-mt_delR_pass = [ROOT.TH1F("mt_delR_pass_{}".format(str(i)),"mt_delR_pass_{}".format(str(i)), 40, 0, 2) for i in range(7)]
-mt_delR_pass_b = [ROOT.TH1F("mt_delR_pass_b_{}".format(str(i)),"mt_delR_pass_b_{}".format(str(i)), 40, 0, 2) for i in range(7)]
-#mt_delR_total = [ROOT.TH1F("mt_delR_total_{}".format(str(i)),"mt_delR_total_{}".format(str(i)),40, 0, 2) for i in range(7)]
+mt_delR_pass = [ROOT.TH1F("mt_delR_pass_{}".format(str(i)),"mt_delR_pass_{}".format(str(i)), 40, 0, 2) for i in range(1)]
+mt_delR_pass_b = [ROOT.TH1F("mt_delR_pass_b_{}".format(str(i)),"mt_delR_pass_b_{}".format(str(i)), 40, 0, 2) for i in range(1)]
+#mt_delR_total = [ROOT.TH1F("mt_delR_total_{}".format(str(i)),"mt_delR_total_{}".format(str(i)),40, 0, 2) for i in range(1)]
 mt_delR_total = ROOT.TH1F("mt_delR_total","mt_delR_total",40, 0, 2)
 
 Tau_gen_v1=ROOT.TLorentzVector(0.0,0.0,0.0,0.0)
@@ -304,31 +304,31 @@ def classifyTauDecayMode(theTree):
 
         
 
-#def tauMatchedandPassed(tree_bbtt,genFourVec,tau_id):
-#    i_counter=0
-#    i_least=0
-#    delta_r=0
-#    delta_r_least=0
-#    for j in range(len(tree_bbtt.Tau_pt)):
-#        if ((tree_bbtt.Tau_pt[i_least]<20) or (abs(tree_bbtt.Tau_eta[i_least])>2.3)):
-#            continue
-#        Tau_reco.SetPtEtaPhiM(tree_bbtt.Tau_pt[j],tree_bbtt.Tau_eta[j],tree_bbtt.Tau_phi[j],tree_bbtt.Tau_mass[j])
-#        delta_r = genFourVec.DeltaR(Tau_reco)
-#        #print ("delta R = ", delta_r)
-#        if ((i_counter==0) or delta_r<delta_r_least):
-#            i_least=j
-#            i_counter=i_counter + 1
-#            delta_r_least=delta_r
-#
-#    if((delta_r_least < 0.1) 
-#    and (i_counter !=0) 
-#    #and (tree_bbtt.Tau_pt[i_least]>20) 
-#    #and (abs(tree_bbtt.Tau_eta[i_least])<2.3) 
-#    #and tree_bbtt.Tau_idDecayModeNewDMs[i_least]==1 
-#    and ((tree_bbtt.Tau_idDeepTau2017v2p1VSjet[i_least] & tau_id) == tau_id)):
-#        return True,i_least
-#    else:
-#        return False,i_least
+def tauMatchedandPassed(tree_bbtt,genFourVec,tau_id):
+    i_counter=0
+    i_least=0
+    delta_r=0
+    delta_r_least=0
+    for j in range(len(tree_bbtt.Tau_pt)):
+        if ((tree_bbtt.Tau_pt[i_least]<20) or (abs(tree_bbtt.Tau_eta[i_least])>2.3)):
+            continue
+        Tau_reco.SetPtEtaPhiM(tree_bbtt.Tau_pt[j],tree_bbtt.Tau_eta[j],tree_bbtt.Tau_phi[j],tree_bbtt.Tau_mass[j])
+        delta_r = genFourVec.DeltaR(Tau_reco)
+        #print ("delta R = ", delta_r)
+        if ((i_counter==0) or delta_r<delta_r_least):
+            i_least=j
+            i_counter=i_counter + 1
+            delta_r_least=delta_r
+
+    if((delta_r_least < 0.1) 
+    and (i_counter !=0) 
+    #and (tree_bbtt.Tau_pt[i_least]>20) 
+    #and (abs(tree_bbtt.Tau_eta[i_least])<2.3) 
+    #and tree_bbtt.Tau_idDecayModeNewDMs[i_least]==1 
+    and ((tree_bbtt.Tau_idDeepTau2017v2p1VSjet[i_least] & tau_id) == tau_id)):
+        return True,i_least
+    else:
+        return False,i_least
 
 #def tauMatched(tree_bbtt,genFourVec):
 #    i_counter=0
@@ -375,7 +375,9 @@ def boostedtauMatchedandPassed(tree_bbtt,genFourVec,tau_id):
         #print (tau_id," delta_R = ",delta_r, " ID Value = ",tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least]," passed = ",(tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least] & tau_id) == tau_id)
     #print ("type = ",type(tau_id), type(tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least]), tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least], i_least, tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least]==0)
     if((delta_r_least < 0.3) 
-    and (i_counter !=0) 
+    and (i_counter !=0)
+    and  ((tree_bbtt.boostedTau_idAntiEle2018[i_least] & 2) == 2)
+    and  ((tree_bbtt.boostedTau_idAntiMu[i_least] & 1) == 1)
     #and (tree_bbtt.boostedTau_pt[i_least]>20) 
     #and (abs(tree_bbtt.boostedTau_eta[i_least])<2.3) 
     #and tree_bbtt.boostedTau_idDecayModeNewDMs[i_least]==1 
@@ -402,7 +404,9 @@ def boostedtauMatched(tree_bbtt,genFourVec):
         #print (tau_id," delta_R = ",delta_r, " ID Value = ",tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least]," passed = ",(tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least] & tau_id) == tau_id)
     #print ("type = ",type(tau_id), type(tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least]), tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least], i_least, tree_bbtt.boostedTau_idMVAnewDM2017v2[i_least]==0)
     if((delta_r_least < 0.3) 
-    and (i_counter !=0)): 
+    and (i_counter !=0)
+    and  ((tree_bbtt.boostedTau_idAntiEle2018[i_least] & 2)==2) 
+    and  ((tree_bbtt.boostedTau_idAntiMu[i_least] & 1) == 1)): 
     #and (tree_bbtt.boostedTau_pt[i_least]>20) 
     #and (abs(tree_bbtt.boostedTau_eta[i_least])<2.3) 
     #and tree_bbtt.boostedTau_idDecayModeNewDMs[i_least]==1 
@@ -487,18 +491,17 @@ for event_index in range(nEntries):
         tt_taupt_total.Fill(Tau_gen_v1.Pt())
         tt_taupt_total.Fill(Tau_gen_v2.Pt())
 
-        for y in range(7):
+        for y in range(1):
             tau_id = tau_working[y]
             btau_id = boostedtau_working[y]
-            if (boostedtauMatchedandPassed(tree_bbtt,Tau_gen_v1,btau_id)[0] and boostedtauMatchedandPassed(tree_bbtt,Tau_gen_v2,btau_id)[0]):
-                if (boostedtauMatchedandPassed(tree_bbtt,Tau_gen_v1,btau_id)[1] == boostedtauMatchedandPassed(tree_bbtt,Tau_gen_v2,btau_id)[1]):
-                    continue
-                tt_higgspt_pass_b[y].Fill(Higgs_pt)
-                tt_delR_pass_b[y].Fill(Tau_gen_v1.DeltaR(Tau_gen_v2))
-                tt_taupt_pass_b[y].Fill(Tau_gen_v1.Pt())
-                tt_taupt_pass_b[y].Fill(Tau_gen_v2.Pt())
+            if (boostedtauMatched(tree_bbtt,Tau_gen_v1)[0] and boostedtauMatched(tree_bbtt,Tau_gen_v2)[0]):
+                if (boostedtauMatched(tree_bbtt,Tau_gen_v1)[1] != boostedtauMatched(tree_bbtt,Tau_gen_v2)[1]):
+                    tt_higgspt_pass_b[y].Fill(Higgs_pt)
+                    tt_delR_pass_b[y].Fill(Tau_gen_v1.DeltaR(Tau_gen_v2))
+                    tt_taupt_pass_b[y].Fill(Tau_gen_v1.Pt())
+                    tt_taupt_pass_b[y].Fill(Tau_gen_v2.Pt())
 
-            if (boostedtauMatchedandPassed(tree_bbtt,Tau_gen_v1,btau_id)[0] or boostedtauMatchedandPassed(tree_bbtt,Tau_gen_v2,btau_id)[0]):
+            if (boostedtauMatched(tree_bbtt,Tau_gen_v1)[0] or boostedtauMatched(tree_bbtt,Tau_gen_v2)[0]):
                 tt_one_higgspt_pass_b[y].Fill(Higgs_pt)
                 tt_one_delR_pass_b[y].Fill(Tau_gen_v1.DeltaR(Tau_gen_v2))
                 tt_one_taupt_pass_b[y].Fill(Tau_gen_v1.Pt())
@@ -520,11 +523,11 @@ for event_index in range(nEntries):
         et_delR_total.Fill(Tau_gen_v1.DeltaR(Tau_gen_v2))
         et_taupt_total.Fill(Tau_gen_v1.Pt())
 
-        for y in range(7):
+        for y in range(1):
             tau_id = tau_working[y]
             btau_id = boostedtau_working[y]
 
-            if(boostedtauMatchedandPassed(tree_bbtt,Tau_gen_v1,btau_id)[0]):
+            if(boostedtauMatched(tree_bbtt,Tau_gen_v1)[0]):
                 et_higgspt_pass_b[y].Fill(Higgs_pt)
                 et_delR_pass_b[y].Fill(Tau_gen_v1.DeltaR(Tau_gen_v2))
                 et_taupt_pass_b[y].Fill(Tau_gen_v1.Pt())
@@ -545,11 +548,11 @@ for event_index in range(nEntries):
         mt_delR_total.Fill(Tau_gen_v1.DeltaR(Tau_gen_v2))
         mt_taupt_total.Fill(Tau_gen_v1.Pt())
 
-        for y in range(7):
+        for y in range(1):
             tau_id = tau_working[y]
             btau_id = boostedtau_working[y]
 
-            if(boostedtauMatchedandPassed(tree_bbtt,Tau_gen_v1,btau_id)[0]):
+            if(boostedtauMatched(tree_bbtt,Tau_gen_v1)[0]):
                 mt_higgspt_pass_b[y].Fill(Higgs_pt)
                 mt_delR_pass_b[y].Fill(Tau_gen_v1.DeltaR(Tau_gen_v2))
                 mt_taupt_pass_b[y].Fill(Tau_gen_v1.Pt())             
@@ -558,15 +561,15 @@ for event_index in range(nEntries):
 
 
 def makeEfficiencies (passHist, totalHist, dictionary, xtitle, name = "name"):
-    for y in range(7):
+    for y in range(1):
         dictionary[y] = ROOT.TGraphAsymmErrors(passHist[y],totalHist,name)
         dictionary[y].SetLineColor(linecolor[y+1])
         dictionary[y].SetMarkerStyle(markerstylesolid[y+1])
         dictionary[y].SetMarkerColor(markercolor[y+1])
         dictionary[y].SetMarkerSize(1.5)
-        dictionary[y].SetTitle("Reconstruction + Identification Efficiency")
+        dictionary[y].SetTitle("Reconstruction Efficiency")
         dictionary[y].GetXaxis().SetTitle(xtitle)
-        dictionary[y].GetYaxis().SetTitle("Reconstruction + Identification Efficiency")
+        dictionary[y].GetYaxis().SetTitle("Reconstruction Efficiency")
         dictionary[y].GetYaxis().SetRangeUser(-0.05,1.1)
 
 
@@ -578,13 +581,13 @@ def drawOncanvas (eff_dict,headerString,savefile,type,wp):
     can_leg.SetFillStyle(1001)
     can_leg.SetLineWidth(0)
 
-    for  y in range(7):
+    for  y in range(1):
         if y == 0:
             eff_dict[y].Draw("ap")
         else:
             eff_dict[y].Draw("same p")
         
-        can_leg.AddEntry(eff_dict[y],type+wp[y],"ep")
+        can_leg.AddEntry(type+" Reconstruction","ep")
 
     can_leg.Draw("same")
     
@@ -624,18 +627,18 @@ makeEfficiencies(mt_delR_pass_b,mt_delR_total,delR_mt_eff_b,"del_R","del mt")
 makeEfficiencies(mt_taupt_pass_b,mt_taupt_total,taupt_mt_eff_b,"Tau p_{T}","tau_mt_pt")
 drawOncanvas(mt_eff_b,"m Tau","{}_mt_eff_b.pdf".format(args.mp),"boosted",btau_wp)
 drawOncanvas(delR_mt_eff_b,"m Tau","{}_del_mt_eff_b.pdf".format(args.mp),"boosted",btau_wp)
-drawOncanvas(taupt_mt_eff_b,"m Tau","{}_taupt_mt_eff_b.pdf".format(args.mp),"boosted",btau_wp)
+drawOncanvas(taupt_mt_eff_b,"m Tau","{}_taupt_mt_eff_b.pdf".format(args.mp),"boosted",btau_wp)    
 
 with open('{}_EventCount.txt'.format(args.mp), 'w') as f:
-    f.write("Di - Tau Events = " + str(tt_eve) +'/n')
-    f.write("E - Tau Events = " + str(te_eve) +'/n')
-    f.write("M - Tau Events = " + str(tm_eve) +'/n')
-    f.write("Other Channels = " + str(other) +'/n')
-    f.write("No Leptons = " + str(nil) +'/n')
-    f.write("One lepton = " + str(one) +'/n')
-    f.write("More handronic taus = " + str(moreh) +'/n')
-    f.write("More taus = " + str(more) +'/n')
-    f.write("differnet mothers = " + str(diffMo) +'/n')
+    f.write("Di - Tau Events = " + str(tt_eve) +'\n')
+    f.write("E - Tau Events = " + str(te_eve) +'\n')
+    f.write("M - Tau Events = " + str(tm_eve) +'\n')
+    f.write("Other Channels = " + str(other) +'\n')
+    f.write("No Leptons = " + str(nil) +'\n')
+    f.write("One lepton = " + str(one) +'\n')
+    f.write("More handronic taus = " + str(moreh) +'\n')
+    f.write("More taus = " + str(more) +'\n')
+    f.write("differnet mothers = " + str(diffMo) +'\n')
 
 print ("Di - Tau Events = ", tt_eve)
 print ("E - Tau Events = ", te_eve)

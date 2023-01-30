@@ -52,12 +52,25 @@ class genMeasurementRadionBranches(Module):
         def endFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
             pass
     
+    def findingMotherPart(self,tree,Ind,parentId, interId):
+        if tree.GenPart_genPartIdxMother[Ind] < 0:
+            return False
+        if abs(tree.GenPart_pdgId[tree.GenPart_genPartIdxMother[Ind]]) == parentId:
+            return True
+        elif abs(tree.GenPart_pdgId[tree.GenPart_genPartIdxMother[Ind]]) == interId:
+            #print ("What is index of the parent",tree.GenPart_genPartIdxMother[Ind])
+            #print ("event_info=",tree.run,tree.luminosityBlock,tree.event)
+            return self.findingMotherPart(tree,tree.GenPart_genPartIdxMother[Ind],parentId,interId)
+        else:
+            return False
+
 
 
     def analyze(self, event):
         genParticles = Collection(event, 'GenPart', 'nGenPart')
 
-        genParticleRadion = filter(lambda x: (x.mass==1000 or x.mass==1200 or x.mass==1400 or x.mass == 1600 or x.mass==1800 or x.mass==2000 or x.mass==2500 or x.mass==3000 or x.mass==3500 or x.mass==4000 or x.mass==4500) and x.pt>=1,genParticles)
+        #genParticleRadion = filter(lambda x: (x.mass==1000 or x.mass==1200 or x.mass==1400 or x.mass == 1600 or x.mass==1800 or x.mass==2000 or x.mass==2500 or x.mass==3000 or x.mass==3500 or x.mass==4000 or x.mass==4500) and x.pt>=1,genParticles)
+        genParticleRadion = filter(lambda x: (x.mass>=1000) and x.pt>=0.01,genParticles)
         genParticlesHiggs = filter(lambda x: x.mass==125,genParticles)
 
 
@@ -67,20 +80,23 @@ class genMeasurementRadionBranches(Module):
 
 
         for index, particle in enumerate(genParticles):
-            if abs(particle.pdgId) == 15:
-                if genParticles[particle.genPartIdxMother].mass == 125:
-                    taucounter = taucounter + 1
-                    mother_index.append(particle.genPartIdxMother)
+            if self.findingMotherPart(event,index,25,15):
+                mother_index.append(particle.genPartIdxMother)
+                break
+            #if abs(particle.pdgId) == 15:
+            #    if genParticles[particle.genPartIdxMother].mass == 125:
+            #        taucounter = taucounter + 1
+                    #mother_index.append(particle.genPartIdxMother)
 
-        if (taucounter==2):
-            if mother_index[0] == mother_index[1]:
-                self.out.fillBranch("ResoGenHiggs_mass",(event.fastMTT_HTTleg_m/genParticles[mother_index[0]].mass))
-                self.out.fillBranch("ResoGenHiggsWithMet_mass",(event.fastMTT_HTTlegWithMet_m/genParticles[mother_index[0]].mass))
-                self.out.fillBranch("ResoGenHiggs_pt",(event.fastMTT_HTTleg_pt/genParticles[mother_index[0]].pt))
-                self.out.fillBranch("ResoGenHiggsWithMet_pt",(event.fastMTT_HTTlegWithMet_pt/genParticles[mother_index[0]].pt))
-
-                self.out.fillBranch("ResoVisHiggs_mass",(event.VisHiggs_m/genParticles[mother_index[0]].mass))
-                self.out.fillBranch("ResoVisHiggs_pt",(event.VisHiggs_pt/genParticles[mother_index[0]].pt))
+        #if (taucounter==2):
+        #if mother_index[0] == mother_index[1]:
+        if (len(mother_index)!=0):
+            self.out.fillBranch("ResoGenHiggs_mass",(event.fastMTT_HTTleg_m/genParticles[mother_index[0]].mass))
+            self.out.fillBranch("ResoGenHiggsWithMet_mass",(event.fastMTT_HTTlegWithMet_m/genParticles[mother_index[0]].mass))
+            self.out.fillBranch("ResoGenHiggs_pt",(event.fastMTT_HTTleg_pt/genParticles[mother_index[0]].pt))
+            self.out.fillBranch("ResoGenHiggsWithMet_pt",(event.fastMTT_HTTlegWithMet_pt/genParticles[mother_index[0]].pt))
+            self.out.fillBranch("ResoVisHiggs_mass",(event.VisHiggs_m/genParticles[mother_index[0]].mass))
+            self.out.fillBranch("ResoVisHiggs_pt",(event.VisHiggs_pt/genParticles[mother_index[0]].pt))
         
         else:
             print ("Not enough taus ",taucounter)
@@ -140,7 +156,7 @@ if __name__ == "__main__":
 	parser.add_argument('--postfix',help="string at the end of output file names", default="")
 	args = parser.parse_args()
 
-	fnames = glob.glob(args.inputLocation + "/*.root")  #making a list of input files
+	fnames = glob.glob(args.inputLocation + "/Radion*.root")  #making a list of input files
 
 	
 

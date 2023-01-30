@@ -68,6 +68,8 @@ class fastMTTBranches(Module):
         gMuon = Collection(event, 'gMuon', 'gnMuon')
         gFatJet = Collection(event, 'gFatJet', 'gnFatJet')
 
+        #print ("print number of taus, electron = ",event.gnTau,event.gnboostedTau,event.gnElectron)
+
         firstLepton = fastMTTlepton()
         secondLepton = fastMTTlepton()
         theMET = fastMTTmet()
@@ -103,6 +105,7 @@ class fastMTTBranches(Module):
                 collectionBasedFirstLepton = gTau[0]
             if(len(gboostedTau) != 0):
                 collectionBasedFirstLepton = gboostedTau[0]
+            #print ("length = ",len(gTau),len(gboostedTau),event.channel)
             fastMTTfirstLeptonMass = collectionBasedFirstLepton.mass
 
             if event.channel == 1:

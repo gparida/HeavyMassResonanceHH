@@ -1,12 +1,9 @@
 from numbers import Integral
 import ROOT
 import argparse  ##Importing root and package to take arguments 
-from controlPlotDictionaryCamilla import *
+from controlPlotDictionaryCamilla_old import *
 import os
 from array import array
-import glob
-from re import search
-
 
 class MakeHistograms(object):
     #constructor to initialize the objects
@@ -81,13 +78,13 @@ class MakeHistograms(object):
         self.HistogramName=theHisto
 
 def clubHistograms(list,histObjects):
-    clubHist = None
-    for name in list:
-        if histObjects[name].HistogramName != None:
-            if clubHist == None:
-                clubHist = histObjects[name].HistogramName.Clone()
-            clubHist.Add(histObjects[name].HistogramName)
-    return clubHist
+        clubHist = None
+        for name in list:
+            if histObjects[name].HistogramName != None:
+                if clubHist == None:
+                    clubHist = histObjects[name].HistogramName.Clone()
+                clubHist.Add(histObjects[name].HistogramName)
+        return clubHist
 
 def MakeStackErrors(theStack):
     denominatorHistos = theStack.GetHists().At(0).Clone()
@@ -161,7 +158,7 @@ def MakeRatioHistograms(dataHisto,backgroundStack,variable):
     finalRatioHist.GetXaxis().SetTitleOffset(0.83)
     finalRatioHist.SetMaximum(1.3)
     finalRatioHist.SetMinimum(0.7)
-    finalRatioHist.GetYaxis().SetRangeUser(0.4,1.6)
+    finalRatioHist.GetYaxis().SetRangeUser(0.0,2.0)
 
     finalRatioHist.GetXaxis().SetLabelSize(0.15)
 
@@ -195,7 +192,7 @@ def main():
     parser = argparse.ArgumentParser(description='Generate control plots quick.')    
     parser.add_argument('--year',
                         nargs='?',
-                        choices=['2016','2017','2018','test','2016tot','2016APV'],
+                        choices=['2016','2017','2018','test','2016tot'],
                         help='Use the file\'s fake factor weightings when making plots for these files.',
                         required=True)
     parser.add_argument('--batchMode',
@@ -208,7 +205,7 @@ def main():
                     default=["gFatJet_pt",
                             "gFatJet_eta",
                             "gFatJet_msoftdrop",
-                            "MET_ pt",
+                            "MET_pt",
                             "allTau_pt",
                             "allTau_eta",
                             #"gMuon_pt",
@@ -292,7 +289,7 @@ def main():
                     #       'nMuon'])
 
 
-    parser.add_argument('--additionalSelections','-C2',
+    parser.add_argument('--additionalSelections',
                         nargs='+',
                         help='additional region selections',
                         #default=['Tau_idMVAoldDM2017v2 & 4 == 4','nTau==2 || nboostedTau==2','FatJet_btagDeepB > 0.45','nFatJet == 1'])
@@ -305,22 +302,19 @@ def main():
                         #"Flag_BadPFMuonFilter",
                         #"Flag_eeBadScFilter"])
                         #,"gMVis_LL>0","(gFatJet_particleNetMD_Xbb / (gFatJet_particleNetMD_Xbb + gFatJet_particleNetMD_QCD))>=0.87"
-                        default=["gDeltaR_LL<1.5","gDeltaR_LL>0","fastMTT_RadionLegWithMet_m>750","fastMTT_RadionLegWithMet_m<4750","gMVis_LL>0"])
+                        default=["gDeltaR_LL<1.5","fastMTT_RadionLegWithMet_m>750","fastMTT_RadionLegWithMet_m<4250"])
     parser.add_argument('--pause',
                         help='pause after drawing each plot to make it easier to view',
                         action='store_true')
-    parser.add_argument('--standardCutString','-C1',
+    parser.add_argument('--standardCutString',
                         nargs='?',
                         help='Change the standard cutting definition',
-                        default="")
+                        default="channel==0")
     parser.add_argument('--changeHistogramBounds',
                         nargs = '?',
                         help = 'Change the standard histogram bounding (affects all histograms)')
     
     parser.add_argument('--logScale', help='make log plots', action='store_true')
-    parser.add_argument('--massPoint', choices=["1000","2000","3000","3500"], help='to include signal sample in the plot', required=True)
-    parser.add_argument('--Channel',choices=["tt","et","mt","all"], required=True)
-    parser.add_argument('--Sub',required=True)
 
     parser.add_argument('--Path',help='path to the files',required=True)
     parser.add_argument('--Weight',help='weight to be added to MC', default='FinalWeighting')
@@ -340,8 +334,7 @@ def main():
         dataPath = args.Path
     elif args.year == '2016tot':
         dataPath = args.Path
-    elif args.year == '2016APV':
-        dataPath = args.Path
+
     elif args.year == '2017':
         dataPath = '/data/aloeliger/SMHTT_Selected_2017_Deep/'
     elif args.year == '2018':
@@ -353,68 +346,7 @@ def main():
     #Open all the files that are necessary for plotting .......................#############################
     #for index in range(len(DatasetNameList)) 
 
-    fnames = glob.glob(args.Path + "*.root")
-    DatasetNameList=[]
-    DYlow_HistoList=[]
-    DY_HistoList=[]
-    ST_HistoList=[]
-    QCD_HistoList=[]
-    WJets_HistoList=[]
-    TT_HistoList=[]
-    DiBoson_HistoList=[]
-    Other_HistoList=[]
-    SignalNameList =[]
-    SignalToPlot = []
-
-    for file in fnames:
-        nameStrip=file.strip()
-        filename = (nameStrip.split('/')[-1]).split('.')[-2]
-        if (not search("Radion",filename)):
-            DatasetNameList.append(filename)
-        else:
-            SignalNameList.append(filename)
-            if (search(args.massPoint,filename)):
-                SignalToPlot = filename
-
-
-        if search("TTT", filename):
-            TT_HistoList.append(filename)
-        if ((search("DY",filename) and search("M-10to50",filename)) or (search("DY",filename) and search("M-4to50",filename))):
-            DYlow_HistoList.append(filename)
-        if ((search("DY",filename))):
-            if (( not search("M-10to50",filename)) and ((not search("M-4to50",filename)))): 
-                DY_HistoList.append(filename)
-        if search("WJet", filename):
-            WJets_HistoList.append(filename)
-        if search("ST_", filename):
-            ST_HistoList.append(filename)
-        if search("QCD", filename):
-            QCD_HistoList.append(filename)
-        if (search("WW", filename) or search("WZ", filename) or search("ZZ", filename)):
-            DiBoson_HistoList.append(filename)
-    
-    Other_HistoList= QCD_HistoList + DiBoson_HistoList + ST_HistoList
-    print ("Datasets = ",DatasetNameList)
-    print()
-    print ("Signal Samples =",SignalNameList,SignalToPlot)
-    print()
-    print ("DYlow_HistoList = ", DYlow_HistoList)
-    print()
-    print("DY_HistoList =", DY_HistoList)
-    print()
-    print("WJets_HistoList =",WJets_HistoList)
-    print()
-    print("TT_HistoList =",TT_HistoList)
-    print()
-    print("DiBoson_HistoList =",DiBoson_HistoList)
-    print()
-    print("Other_HistoList =",Other_HistoList)
-    print()
-    print("SignalNameList =",SignalNameList)
-    print()
-    print("SignalToPlot",SignalToPlot)
-    print()
-    #print DatasetNameList
+    print DatasetNameList
     
 
     ########################################################################################################
@@ -448,7 +380,7 @@ def main():
             DatasetObjects[DatasetNameList[index]]=MakeHistograms(dataPath,DatasetNameList[index])
 
         for index in range(len(DatasetNameList)):
-            #print DatasetNameList[index]
+            print DatasetNameList[index]
             if DatasetNameList[index] == "Data":
                 DatasetObjects[DatasetNameList[index]].StandardDraw(DatasetObjects[DatasetNameList[index]].RootFileName,
                 variable,
@@ -469,7 +401,7 @@ def main():
             SignalObjects[SignalNameList[index]]=MakeHistograms(dataPath,SignalNameList[index])
         
         for index in range(len(SignalNameList)):
-            print (SignalNameList[index])
+            print SignalNameList[index]
             SignalObjects[SignalNameList[index]].StandardDraw(SignalObjects[SignalNameList[index]].RootFileName,
                 variable,
                 args.standardCutString,
@@ -478,12 +410,12 @@ def main():
             
         
         ########################Signal-Histogram#############################
-        Signal_Histo = SignalObjects[SignalToPlot].HistogramName.Clone()
+        Signal_Histo = SignalObjects["RadionTohhtohtatahbb_M-1000"].HistogramName.Clone()
         #####################################################################
 
         #######################DYlow-Histograms####################################
 
-        DYlow_Histo = clubHistograms(DYlow_HistoList,DatasetObjects)
+        DYlow_Histo = clubHistograms(["DYJetsToLL_M-10to50"],DatasetObjects)
         
 	    
 
@@ -492,39 +424,89 @@ def main():
 
         #######################DY-Histograms####################################
 
-        DY_Histo = clubHistograms(DY_HistoList,DatasetObjects)
+        DY_Histo = clubHistograms(["DYJets_HT-100to200",  
+                                   "DYJets_HT-1200to2500",
+                                   "DYJets_HT-200to400",  
+                                   "DYJets_HT-2500toinf", 
+                                   "DYJets_HT-400to600",  
+                                   "DYJets_HT-600to800",  
+                                   "DYJets_HT-800to1200"],DatasetObjects)
         
 	    
 
         ########################################################################
 #
         ############################ST-Histograms############################################
-        ST_Histo = clubHistograms(ST_HistoList,DatasetObjects)
+        ST_Histo = clubHistograms([ "ST_s-channel_4f",         
+                                    "ST_t-channel_antitop_4f",
+                                    "ST_t-channel_top_4f",    
+                                    "ST_tW_antitop_5f",
+                                    "ST_tW_top_5f"  ],DatasetObjects)
 
         #PF_ST_Histo = DatasetObjects["ST_s-channel_4f"].PassFailHistogramName.Clone()
         #####################################################################################
 #
         ##############################QCD-Histograms##########################################
-        QCD_Histo = clubHistograms(QCD_HistoList,DatasetObjects)
+        QCD_Histo = clubHistograms([
+                                    "QCD_HT1000to1500",
+                                    "QCD_HT100to200",  
+                                    "QCD_HT1500to2000",
+                                    "QCD_HT2000toinf", 
+                                    "QCD_HT200to300",  
+                                    "QCD_HT300to500",  
+                                    "QCD_HT500to700",  
+                                    #"QCD_HT50to100",   
+                                    "QCD_HT700to1000", 
+                                  ],DatasetObjects)
 
         #####################################################################################
 
         ##################################WJets##############################################
-        WJets_Histo = clubHistograms(WJets_HistoList,DatasetObjects)
+        WJets_Histo = clubHistograms([ "WJets_HT-100To200",
+                                      "WJets_HT-1200to2500",
+                                      "WJets_HT-200to400",
+                                      "WJets_HT-2500toInf",
+                                      "WJets_HT-400to600",
+                                      "WJets_HT-600to800",
+                                      "WJets_HT-800to1200"
+                                      ],DatasetObjects)
 
         ######################################################################################
 #
         ####################################TT-Histograms######################################
-        TT_Histo = clubHistograms(TT_HistoList,DatasetObjects)
+        TT_Histo = clubHistograms(["TTTo2L2Nu",          
+                                   "TTToHadronic",      
+                                   "TTToSemiLeptonic"],DatasetObjects)
         ########################################################################################
 #
         ################################DiBoson-Histograms##########################################
-        DiBoson_Histo = clubHistograms(DiBoson_HistoList,DatasetObjects)
+        DiBoson_Histo = clubHistograms(["WWTo1L1Nu2Q",
+                                        "WZTo1L1nu2q",
+                                        "WZTo2Q2Nu",
+                                        "ZZTo2Q2Nu"],DatasetObjects)
         
         ################################################################################################
 
          ####################################Combine=ing Backgrounds########################################
-        Other_Histo = clubHistograms(Other_HistoList,DatasetObjects)
+        Other_Histo = clubHistograms([
+                                      "WWTo1L1Nu2Q",
+                                      "WZTo1L1nu2q",
+                                      "WZTo2Q2Nu",
+                                      "ZZTo2Q2Nu",   
+                                      "QCD_HT1000to1500",
+                                      "QCD_HT100to200",  
+                                      "QCD_HT1500to2000",
+                                      "QCD_HT2000toinf", 
+                                      "QCD_HT200to300",  
+                                      "QCD_HT300to500",  
+                                      "QCD_HT500to700",  
+                                      #"QCD_HT50to100",   
+                                      "QCD_HT700to1000", 
+                                      "ST_s-channel_4f",         
+                                      "ST_t-channel_antitop_4f",
+                                      "ST_t-channel_top_4f",    
+                                      "ST_tW_antitop_5f",
+                                      "ST_tW_top_5f"],DatasetObjects)
         #new_binning = array('d', [0,(100*6/3),(100*18/3), 1500])
         #Other_Histo = Other_Histo.Rebin(3, '', new_binning ) # for custom binning
 
@@ -534,9 +516,9 @@ def main():
 
         ################################Data is represented as points########################################################################
 
-        DatasetObjects["Data"].HistogramName.SetMarkerStyle(20)
-        DatasetObjects["Data"].HistogramName.SetMarkerSize(0.7)
-        DatasetObjects["Data"].HistogramName.Sumw2()
+        DatasetObjects[DatasetNameList[len(DatasetNameList)-1]].HistogramName.SetMarkerStyle(20)
+        DatasetObjects[DatasetNameList[len(DatasetNameList)-1]].HistogramName.SetMarkerSize(0.7)
+        DatasetObjects[DatasetNameList[len(DatasetNameList)-1]].HistogramName.Sumw2()
         #########################################Counting the events contributing##########################################################
 
         print ("Number of events in TTBar = ",TT_Histo.Integral())
@@ -546,20 +528,20 @@ def main():
         print ("Number of events of Data = ",DatasetObjects["Data"].HistogramName.Integral())
         ################################Color_Definitions -- Background Fill##############################################
         color_DiBoson="#ff66c4"
-        color_TT="#8AC268"
+        color_TT="#3E8443"
         color_WJets="#48F7ED"
         color_QCD="#d4ff66"
         color_ST="#66ffe8"
         color_DY="#E8A817"
         color_DYlow="#F7EE2D"
-        color_other = "#E1D6EE" 
+        color_other = "#0535F7" 
         #color_jetfake="#f1cde1"
 
         #################################Filling Color for Backgrounds###############################################################################
 
         #ST_s_channel_4f.SetFillColor(ROOT.TColor.GetColor("#ffcc66"))
         Signal_Histo.SetLineColor(ROOT.kRed)
-        Signal_Histo.Scale(20)
+        Signal_Histo.Scale(1)
         Signal_Histo.SetLineWidth(1)
 
         DiBoson_Histo.SetFillColor(ROOT.TColor.GetColor(color_DiBoson))
@@ -568,8 +550,7 @@ def main():
         QCD_Histo.SetFillColor(ROOT.TColor.GetColor(color_QCD))
         ST_Histo.SetFillColor(ROOT.TColor.GetColor(color_ST))
         DY_Histo.SetFillColor(ROOT.TColor.GetColor(color_DY))
-        if (DYlow_Histo!=None):
-            DYlow_Histo.SetFillColor(ROOT.TColor.GetColor(color_DYlow))
+        DYlow_Histo.SetFillColor(ROOT.TColor.GetColor(color_DYlow))
         Other_Histo.SetFillColor(ROOT.TColor.GetColor(color_other))
 
         DiBoson_Histo.SetLineWidth(0)
@@ -578,8 +559,7 @@ def main():
         QCD_Histo.SetLineWidth(0)
         ST_Histo.SetLineWidth(0)
         DY_Histo.SetLineWidth(0)
-        if (DYlow_Histo!=None):
-            DYlow_Histo.SetLineWidth(0)
+        DYlow_Histo.SetLineWidth(0)
         Other_Histo.SetLineWidth(0)
         
         ########################################Histograms For Shape Check###############################
@@ -595,7 +575,7 @@ def main():
 
         ScaleBackground = 1/BackgroundShape.Integral()
 
-        DataShape = DatasetObjects["Data"].HistogramName.Clone()
+        DataShape = DatasetObjects[DatasetNameList[len(DatasetNameList)-1]].HistogramName.Clone()
 
         file.write(variable + '\t' + str(DataShape.Integral())+'\n')
         
@@ -610,8 +590,7 @@ def main():
         
         backgroundStack = ROOT.THStack('backgroundStack','backgroundstack')
         backgroundStack.Add(Other_Histo,'HIST')
-        if (DYlow_Histo!=None):
-            backgroundStack.Add(DYlow_Histo,'HIST')
+        backgroundStack.Add(DYlow_Histo,'HIST')
         backgroundStack.Add(DY_Histo,'HIST')
         #backgroundStack.Add(ST_Histo,'HIST')
         #backgroundStack.Add(QCD_Histo,'HIST')
@@ -695,7 +674,7 @@ def main():
         ratioPad.SetGridy()
         #pad2.SetGridx()
 #
-        ratioHist, ratioError = MakeRatioHistograms(DatasetObjects["Data"].HistogramName,backgroundStack,variable)
+        ratioHist, ratioError = MakeRatioHistograms(DatasetObjects[DatasetNameList[len(DatasetNameList)-1]].HistogramName,backgroundStack,variable)
         ratioPad.cd()
         ratioHist.Draw('ex0')
         ratioError.Draw('SAME e2')
@@ -706,14 +685,14 @@ def main():
         plotPad.SetTickx()
         plotPad.SetTicky()
 #
-        maxi =max(backgroundStack.GetMaximum(),DatasetObjects["Data"].HistogramName.GetMaximum(),Signal_Histo.GetMaximum())
+        maxi =max(backgroundStack.GetMaximum(),DatasetObjects[DatasetNameList[len(DatasetNameList)-1]].HistogramName.GetMaximum(),Signal_Histo.GetMaximum())
         backgroundStack.SetMaximum(maxi + 0.5*maxi)
         
         backgroundStack.Draw()
         backgroundStack_Errors.Draw('SAME e2')
         #backgroundStack.SetTitle(variableAxisTitleDictionary[variable])
         backgroundStack.SetTitle("")
-        DatasetObjects["Data"].HistogramName.Draw('SAME e1')
+        DatasetObjects[DatasetNameList[len(DatasetNameList)-1]].HistogramName.Draw('SAME e1')
         Signal_Histo.Draw('SAME HIST')
         backgroundStack.GetYaxis().SetTitle("Events")
         backgroundStack.GetYaxis().SetTitleSize(0.065)
@@ -727,18 +706,7 @@ def main():
 
         theLegend = ROOT.TLegend(0.85, 0.45, 1.0, 0.75, "", "brNDC")
         theLegend.SetTextSize(0.03)
-        if (args.Channel == "tt"):
-            theLegend.SetHeader("#tau-#tau Channel")
-        elif (args.Channel == "et"):
-            theLegend.SetHeader("e-#tau Channel")
-        elif (args.Channel == "mt"):
-            theLegend.SetHeader("m-#tau Channel")
-        elif (args.Channel == "all"):
-            theLegend.SetHeader("all Channels")
-
-        else:
-            print ("Enter a valid channel")
-        
+        theLegend.SetHeader("#tau-#tau Channel")
         theLegend.SetTextSize(0.03)
         theLegend.SetLineWidth(0)
         theLegend.SetLineStyle(1)
@@ -746,17 +714,16 @@ def main():
         theLegend.SetFillColor(0)
         theLegend.SetBorderSize(0)
         theLegend.SetTextFont(42)
-        theLegend.AddEntry(DatasetObjects["Data"].HistogramName,'Observed','pe')
+        theLegend.AddEntry(DatasetObjects[DatasetNameList[len(DatasetNameList)-1]].HistogramName,'Observed','pe')
         #theLegend.AddEntry(DiBoson_Histo,'DiBoson','f')
         theLegend.AddEntry(TT_Histo,'TTbar','f')
         theLegend.AddEntry(WJets_Histo,'WJets','f')
         #theLegend.AddEntry(QCD_Histo,'QCD','f')
         #theLegend.AddEntry(ST_Histo,'ST_s_Channel','f')
         theLegend.AddEntry(DY_Histo,'Drell-Yan','f')
-        if (DYlow_Histo!=None):
-            theLegend.AddEntry(DYlow_Histo,'Drell-Yan-low','f')
+        theLegend.AddEntry(DYlow_Histo,'Drell-Yan-low','f')
         theLegend.AddEntry(Other_Histo,'Others','f')
-        theLegend.AddEntry(Signal_Histo,'3TeV (#times 20)','l')
+        theLegend.AddEntry(Signal_Histo,'Radion (#times 5)','l')
 
         theLegend.Draw('SAME')
 
@@ -867,20 +834,10 @@ def main():
 
     #############################Saving The Plots####################################
         #theCanvas.SaveAs('QuickControlPlots/'+variable+'_'+args.year+'.png')
-        if (args.Channel == "tt"):
-            theCanvas.SaveAs('TTPlots/'+args.Sub+'/'+variableAxisTitleDictionary[variable]+'_'+args.year+'.png')
-        elif (args.Channel == "et"):
-            theCanvas.SaveAs('ETPlots/'+args.Sub+'/'+variableAxisTitleDictionary[variable]+'_'+args.year+'.png')
-        elif (args.Channel == "mt"):
-            theCanvas.SaveAs('MTPlots/'+args.Sub+'/'+variableAxisTitleDictionary[variable]+'_'+args.year+'.png')
-        elif (args.Channel == "all"):
-            theCanvas.SaveAs('allChannelPlots/'+args.Sub+'/'+variableAxisTitleDictionary[variable]+'_'+args.year+'.png')        
-        else:
-            print ("Enter a valid channel")
-        #theCanvas.SaveAs('TTPlots/CorrWht/'+variableAxisTitleDictionary[variable]+'_'+args.year+'.pdf')
+        theCanvas.SaveAs('TTOldPlots/'+variableAxisTitleDictionary[variable]+'_'+args.year+'.pdf')
         #theCanvas.SaveAs('QuickControlPlots/'+variable+'_'+args.year+'.root')
         #ShapeCanvas.SaveAs('QuickControlPlots/'+ "Normalized" +variable+'_'+args.year+'.png')
-        #ShapeCanvas.SaveAs('TTPlots/CorrWht/'+ "Normalized" +variableAxisTitleDictionary[variable]+'_'+args.year+'.pdf')
+        ShapeCanvas.SaveAs('TTOldPlots/'+ "Normalized" +variableAxisTitleDictionary[variable]+'_'+args.year+'.pdf')
         #ShapeCanvas.SaveAs('QuickControlPlots/'+ "Normalized" +variable+'_'+args.year+'.root')
         #PassFailCanvas.SaveAs('QuickControlPlots/'+"Trigg_PF"+'_'+args.year+'.png')
         #PassFailCanvas.SaveAs('QuickControlPlots/'+"Trigg_PF"+'_'+args.year+'.pdf')

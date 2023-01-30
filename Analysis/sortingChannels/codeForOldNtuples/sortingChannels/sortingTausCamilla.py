@@ -26,9 +26,11 @@ class mergeTauCamilla(Module):
         self.out.branch("{}_mass".format("allTau"),"F",lenVar="n{}".format("allTau"))
         self.out.branch("{}_phi".format("allTau"),"F",lenVar="n{}".format("allTau"))
         self.out.branch("{}_eta".format("allTau"),"F",lenVar="n{}".format("allTau"))
+        self.out.branch("{}_decayMode".format("allTau"),"F",lenVar="n{}".format("allTau"))
+        
         #The boosted Tau branches listed in the dictionary are the ones that are common for both Taus and boosted Taus
-        for branch in boostedTauBranches.values():
-            self.out.branch("{}_{}".format("allTau",branch[0]),"{}".format(branch[1]),lenVar="n{}".format("allTau"))
+        #for branch in boostedTauBranches.values():
+        #    self.out.branch("{}_{}".format("allTau",branch[0]),"{}".format(branch[1]),lenVar="n{}".format("allTau"))
     
     def fillBranches(self,colllist):
         if self.event.channel == 0:
@@ -40,10 +42,11 @@ class mergeTauCamilla(Module):
         self.out.fillBranch("{}_mass".format("allTau"),self.get_attributes("mass",colllist))
         self.out.fillBranch("{}_phi".format("allTau"),self.get_attributes("phi",colllist))
         self.out.fillBranch("{}_eta".format("allTau"),self.get_attributes("eta",colllist))
-        for branch in boostedTauBranches.values():
-            if (self.filename == "Data" and (branch[0] == "genPartFlav" or branch[0] =="genPartIdx")):
-                continue
-            self.out.fillBranch("{}_{}".format("allTau",branch[0]),self.get_attributes(branch[0],colllist))
+        self.out.fillBranch("{}_decayMode".format("allTau"),self.get_attributes("decayMode",colllist))
+        #for branch in boostedTauBranches.values():
+        #    if (self.filename == "Data" and (branch[0] == "genPartFlav" or branch[0] =="genPartIdx")):
+        #        continue
+        #    self.out.fillBranch("{}_{}".format("allTau",branch[0]),self.get_attributes(branch[0],colllist))
 
     def get_attributes(self,variable,collList):
         list = []
@@ -61,6 +64,7 @@ class mergeTauCamilla(Module):
         self.event = event
         tauCollection = Collection(event, "gTau","gnTau")
         boostedtauCollection = Collection(event, "gboostedTau","gnboostedTau")
+        #print ("In the sorting taus module = ",len(boostedtauCollection),len(tauCollection))
         #channelCollection = Collection(event,"channel")
         #print ("channel",channelCollection[0].channel)
         colllist =[]

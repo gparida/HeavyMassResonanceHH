@@ -29,21 +29,28 @@ class particle(object):
 	
 
 	def fillBranches(self,wrappedOutputTree):
+		#print ("Filling ",self.particleType," length = ",len(self.collection))
 		wrappedOutputTree.fillBranch("gn{}".format(self.particleType),len(self.collection))
 		wrappedOutputTree.fillBranch("g{}_pt".format(self.particleType),self.get_attributes("pt"))
+		#print ("What is returned = ",self.get_attributes("mass"))
 		wrappedOutputTree.fillBranch("g{}_mass".format(self.particleType),self.get_attributes("mass"))
 		wrappedOutputTree.fillBranch("g{}_phi".format(self.particleType),self.get_attributes("phi"))
-		wrappedOutputTree.fillBranch("g{}_eta".format(self.particleType),self.get_attributes("eta"))	
+		wrappedOutputTree.fillBranch("g{}_eta".format(self.particleType),self.get_attributes("eta"))
+
+
 
 	def get_attributes(self,variable):
 		try:
 			#print ("This is being returned as attributes: ", [obj[variable] for obj in self.collection])
+			#if variable == "mass":
+				#print ([obj[variable] for obj in self.collection])
 			return [obj[variable] for obj in self.collection]
 
 		except RuntimeError:
+			print ("RunTime error")
 			#print ("Please check ",variable," for ",self.particleType)
-			#print("Error:(")
-			#traceback.print_exc()
+			print("Error:(")
+			traceback.print_exc()
 			return []
 
 	

@@ -11,13 +11,15 @@ class BoostedTau(particle):
     
     def setUpBranches(self, wrappedOutputTree):
         super(BoostedTau,self).setUpBranches(wrappedOutputTree)
-        for branch in boostedTauBranches.values():
-            wrappedOutputTree.branch("g{}_{}".format(self.particleType,branch[0]),"{}".format(branch[1]),lenVar="gn{}".format(self.particleType))
+        wrappedOutputTree.branch("g{}_{}".format(self.particleType,"decayMode"),"{}".format("I"),lenVar="gn{}".format(self.particleType))
+        #for branch in boostedTauBranches.values():
+        #    wrappedOutputTree.branch("g{}_{}".format(self.particleType,branch[0]),"{}".format(branch[1]),lenVar="gn{}".format(self.particleType))
     
     def fillBranches(self,wrappedOutputTree):
         super(BoostedTau,self).fillBranches(wrappedOutputTree)
-        for branch in boostedTauBranches.values():
-            wrappedOutputTree.fillBranch("g{}_{}".format(self.particleType,branch[0]),self.get_attributes(branch[0]))
+        wrappedOutputTree.fillBranch("g{}_{}".format(self.particleType,"decayMode"),self.get_attributes("decayMode"))
+        #for branch in boostedTauBranches.values():
+        #    wrappedOutputTree.fillBranch("g{}_{}".format(self.particleType,branch[0]),self.get_attributes(branch[0]))
 
 
     

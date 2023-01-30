@@ -1,0 +1,1553 @@
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+gDeltaR_LL	1575.0
+variable 	Data Counts
+gDeltaR_LL	1575.0
+variable 	Data Counts
+gDeltaR_LL	370.0
+variable 	Data Counts
+gDeltaR_LL	714.0
+variable 	Data Counts
+gDeltaR_LL	714.0
+variable 	Data Counts
+gDeltaR_LL	1575.0
+variable 	Data Counts
+gDeltaR_LL	1568.0
+variable 	Data Counts
+gDeltaR_LL	1568.0
+variable 	Data Counts
+gDeltaR_LL	1950.0
+variable 	Data Counts
+gDeltaR_LL	1950.0
+variable 	Data Counts
+gDeltaR_LL	2655.0
+variable 	Data Counts
+gDeltaR_LL	1454.0
+variable 	Data Counts
+gDeltaR_LL	1950.0
+variable 	Data Counts
+gDeltaR_LL	2655.0
+variable 	Data Counts
+gDeltaR_LL	2299.0
+variable 	Data Counts
+gDeltaR_LL	1322.0
+variable 	Data Counts
+gDeltaR_LL	1838.0
+variable 	Data Counts
+gDeltaR_LL	1950.0
+variable 	Data Counts
+gDeltaR_LL	1950.0
+variable 	Data Counts
+gDeltaR_LL	1950.0
+variable 	Data Counts
+gDeltaR_LL	1454.0
+variable 	Data Counts
+gDeltaR_LL	1575.0
+variable 	Data Counts
+gDeltaR_LL	1950.0
+variable 	Data Counts
+gDeltaR_LL	2655.0
+variable 	Data Counts
+gDeltaR_LL	2252.0
+variable 	Data Counts
+gDeltaR_LL	1871.0
+variable 	Data Counts
+gDeltaR_LL	1374.0
+variable 	Data Counts
+gDeltaR_LL	749.0
+variable 	Data Counts
+variable 	Data Counts
+gDeltaR_LL	749.0
+variable 	Data Counts
+gFatJet_pt	964.0
+variable 	Data Counts
+gFatJet_pt	486.0
+variable 	Data Counts
+gDeltaR_LL	359.0
+variable 	Data Counts
+gDeltaR_LL	1374.0
+variable 	Data Counts
+gDeltaR_LL	631.0
+variable 	Data Counts
+gDeltaR_LL	1380.0
+variable 	Data Counts
+gDeltaR_LL	1904.0
+variable 	Data Counts
+gDeltaR_LL	850.0
+variable 	Data Counts
+gDeltaR_LL	850.0
+variable 	Data Counts
+gDeltaR_LL	836.0
+variable 	Data Counts
+variable 	Data Counts
+gDeltaR_LL	630.0
+variable 	Data Counts
+gFatJet_pt	874.0
+variable 	Data Counts
+gDeltaR_LL	850.0
+variable 	Data Counts
+gFatJet_pt	1133.0
+variable 	Data Counts
+gDeltaR_LL	2132.0
+variable 	Data Counts
+gFatJet_pt	3073.0
+variable 	Data Counts
+gDeltaR_LL	995.0
+variable 	Data Counts
+gFatJet_pt	1327.0
+variable 	Data Counts
+gDeltaR_LL	836.0
+variable 	Data Counts
+gFatJet_pt	1112.0
+variable 	Data Counts
+gDeltaR_LL	995.0
+variable 	Data Counts
+gFatJet_pt	1327.0
+variable 	Data Counts
+gDeltaR_LL	836.0
+variable 	Data Counts
+gFatJet_pt	1112.0
+variable 	Data Counts
+gDeltaR_LL	631.0
+variable 	Data Counts
+gFatJet_pt	872.0
+variable 	Data Counts
+gDeltaR_LL	836.0
+variable 	Data Counts
+gFatJet_pt	1112.0
+variable 	Data Counts
+gDeltaR_LL	850.0
+variable 	Data Counts
+gFatJet_pt	1133.0
+variable 	Data Counts
+gDeltaR_LL	1054.0
+variable 	Data Counts
+gFatJet_pt	1394.0
+variable 	Data Counts
+gDeltaR_LL	925.0
+variable 	Data Counts
+gFatJet_pt	925.0
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+gDeltaR_LL	412.0
+variable 	Data Counts
+gFatJet_pt	412.0
+variable 	Data Counts
+gDeltaR_LL	412.0
+variable 	Data Counts
+gFatJet_pt	412.0
+variable 	Data Counts
+variable 	Data Counts
+gDeltaR_LL	412.0
+variable 	Data Counts
+gFatJet_pt	412.0
+variable 	Data Counts
+gDeltaR_LL	630.0
+variable 	Data Counts
+gFatJet_pt	874.0
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+gDeltaR_LL	1788.0
+variable 	Data Counts
+gFatJet_pt	858.0
+variable 	Data Counts
+gDeltaR_LL	622.0
+variable 	Data Counts
+gFatJet_pt	865.0
+variable 	Data Counts
+gDeltaR_LL	284.0
+variable 	Data Counts
+gFatJet_pt	422.0
+variable 	Data Counts
+gDeltaR_LL	149.0
+variable 	Data Counts
+gFatJet_pt	246.0
+variable 	Data Counts
+gDeltaR_LL	798.0
+variable 	Data Counts
+gFatJet_pt	798.0
+variable 	Data Counts
+gDeltaR_LL	1820.0
+variable 	Data Counts
+gFatJet_pt	2618.0
+variable 	Data Counts
+gDeltaR_LL	1820.0
+variable 	Data Counts
+gFatJet_pt	2618.0
+variable 	Data Counts
+gDeltaR_LL	1820.0
+variable 	Data Counts
+gFatJet_pt	2618.0
+variable 	Data Counts
+gDeltaR_LL	1820.0
+variable 	Data Counts
+gFatJet_pt	2618.0
+variable 	Data Counts
+gDeltaR_LL	1820.0
+variable 	Data Counts
+gFatJet_pt	2618.0
+variable 	Data Counts
+gDeltaR_LL	524.0
+variable 	Data Counts
+gFatJet_pt	733.0
+variable 	Data Counts
+gDeltaR_LL	721.0
+variable 	Data Counts
+gFatJet_pt	953.0
+variable 	Data Counts
+mtDeltaR_LL	1820.0
+variable 	Data Counts
+variable 	Data Counts
+mtDeltaR_LL	3022.0
+variable 	Data Counts
+mtDeltaR_LL	3022.0
+variable 	Data Counts
+mtDeltaR_LL	3022.0
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+gFatJet_pt	10.7633829117
+variable 	Data Counts
+gDeltaR_LL	10.7633829117
+variable 	Data Counts
+gFatJet_pt	473.0
+variable 	Data Counts
+gDeltaR_LL	473.0
+variable 	Data Counts
+gFatJet_pt	473.0
+variable 	Data Counts
+gDeltaR_LL	473.0
+variable 	Data Counts
+gFatJet_pt	473.0
+variable 	Data Counts
+gDeltaR_LL	473.0
+variable 	Data Counts
+variable 	Data Counts
+gFatJet_pt	473.0
+variable 	Data Counts
+gDeltaR_LL	473.0
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+variable 	Data Counts
+gFatJet_pt	473.0
+variable 	Data Counts
+gDeltaR_LL	473.0
+variable 	Data Counts
+gFatJet_pt	734.0
+variable 	Data Counts
+gDeltaR_LL	525.0
+variable 	Data Counts
+gFatJet_pt	734.0
+variable 	Data Counts
+gDeltaR_LL	525.0
+variable 	Data Counts
+gFatJet_pt	734.0
+variable 	Data Counts
+gDeltaR_LL	525.0
+variable 	Data Counts
+gFatJet_eta	734.0
+variable 	Data Counts
+allTau_pt	1050.0
+variable 	Data Counts
+allTau_eta	1050.0
+variable 	Data Counts
+gFatJet_pt	473.0
+variable 	Data Counts
+gDeltaR_LL	473.0
+variable 	Data Counts
+gFatJet_eta	473.0
+variable 	Data Counts
+allTau_pt	946.0
+variable 	Data Counts
+allTau_eta	946.0
+variable 	Data Counts
+gFatJet_pt	544.0
+variable 	Data Counts
+gDeltaR_LL	546.0
+variable 	Data Counts
+gFatJet_eta	546.0
+variable 	Data Counts
+allTau_pt	545.0
+variable 	Data Counts
+allTau_eta	546.0
+variable 	Data Counts
+gFatJet_pt	457.0
+variable 	Data Counts
+gDeltaR_LL	457.0
+variable 	Data Counts
+gFatJet_eta	457.0
+variable 	Data Counts
+allTau_pt	457.0
+variable 	Data Counts
+allTau_eta	457.0
+variable 	Data Counts
+gFatJet_pt	2628.0
+variable 	Data Counts
+gDeltaR_LL	1827.0
+variable 	Data Counts
+gFatJet_eta	2632.0
+variable 	Data Counts
+allTau_pt	1826.0
+variable 	Data Counts
+allTau_eta	1827.0
+variable 	Data Counts
+gFatJet_pt	956.0
+variable 	Data Counts
+gDeltaR_LL	723.0
+variable 	Data Counts
+gFatJet_eta	957.0
+variable 	Data Counts
+allTau_pt	723.0
+variable 	Data Counts
+allTau_eta	723.0
+variable 	Data Counts
+gFatJet_pt	734.0
+variable 	Data Counts
+gDeltaR_LL	525.0
+variable 	Data Counts
+gFatJet_eta	734.0
+variable 	Data Counts
+allTau_pt	1050.0
+variable 	Data Counts
+allTau_eta	1050.0
+variable 	Data Counts
+gFatJet_pt	479.0
+variable 	Data Counts
+gDeltaR_LL	479.0
+variable 	Data Counts
+gFatJet_eta	479.0
+variable 	Data Counts
+allTau_pt	958.0
+variable 	Data Counts
+allTau_eta	958.0
+variable 	Data Counts
+gFatJet_pt	544.0
+variable 	Data Counts
+gDeltaR_LL	546.0
+variable 	Data Counts
+gFatJet_eta	546.0
+variable 	Data Counts
+allTau_pt	545.0
+variable 	Data Counts
+allTau_eta	546.0
+variable 	Data Counts
+gFatJet_pt	459.0
+variable 	Data Counts
+gDeltaR_LL	459.0
+variable 	Data Counts
+gFatJet_eta	459.0
+variable 	Data Counts
+allTau_pt	459.0
+variable 	Data Counts
+allTau_eta	459.0
+variable 	Data Counts
+variable 	Data Counts
+gFatJet_pt	345.0
+variable 	Data Counts
+gDeltaR_LL	345.0
+variable 	Data Counts
+gFatJet_eta	345.0
+variable 	Data Counts
+allTau_pt	690.0
+variable 	Data Counts
+allTau_eta	690.0
+variable 	Data Counts
+gTau_pt	250.0
+variable 	Data Counts
+gTau_eta	250.0
+variable 	Data Counts
+gTau_pt	620.0
+variable 	Data Counts
+gTau_eta	620.0
+variable 	Data Counts
+gFatJet_pt	404.0
+variable 	Data Counts
+gFatJet_eta	404.0
+variable 	Data Counts
+allTau_pt	620.0
+variable 	Data Counts
+allTau_eta	620.0
+variable 	Data Counts
+gTau_pt	620.0
+variable 	Data Counts
+gTau_eta	620.0
+variable 	Data Counts
+gFatJet_pt	404.0
+variable 	Data Counts
+gFatJet_eta	404.0
+variable 	Data Counts
+allTau_pt	620.0
+variable 	Data Counts
+allTau_eta	620.0
+variable 	Data Counts
+gTau_pt	620.0
+variable 	Data Counts
+gTau_eta	620.0
+variable 	Data Counts
+gFatJet_pt	404.0
+variable 	Data Counts
+gFatJet_eta	404.0
+variable 	Data Counts
+allTau_pt	620.0
+variable 	Data Counts
+allTau_eta	620.0
+variable 	Data Counts
+gTau_pt	326.0
+variable 	Data Counts
+gTau_eta	326.0
+variable 	Data Counts
+gFatJet_pt	163.0
+variable 	Data Counts
+gFatJet_eta	163.0
+variable 	Data Counts
+allTau_pt	326.0
+variable 	Data Counts
+allTau_eta	326.0
+variable 	Data Counts
+gTau_pt	326.0
+variable 	Data Counts
+gTau_eta	326.0
+variable 	Data Counts
+gFatJet_pt	163.0
+variable 	Data Counts
+gFatJet_eta	163.0
+variable 	Data Counts
+allTau_pt	326.0
+variable 	Data Counts
+allTau_eta	326.0
+variable 	Data Counts
+gTau_pt	361.0
+variable 	Data Counts
+gTau_eta	362.0
+variable 	Data Counts
+gFatJet_pt	360.0
+variable 	Data Counts
+gFatJet_eta	362.0
+variable 	Data Counts
+allTau_pt	361.0
+variable 	Data Counts
+allTau_eta	362.0
+variable 	Data Counts
+gTau_pt	361.0
+variable 	Data Counts
+gTau_eta	362.0
+variable 	Data Counts
+gFatJet_pt	360.0
+variable 	Data Counts
+gFatJet_eta	362.0
+variable 	Data Counts
+allTau_pt	361.0
+variable 	Data Counts
+allTau_eta	362.0
+variable 	Data Counts
+gTau_pt	361.0
+variable 	Data Counts
+gTau_eta	362.0
+variable 	Data Counts
+gFatJet_pt	360.0
+variable 	Data Counts
+gFatJet_eta	362.0
+variable 	Data Counts
+allTau_pt	361.0
+variable 	Data Counts
+allTau_eta	362.0
+variable 	Data Counts
+gTau_pt	361.0
+variable 	Data Counts
+gTau_eta	362.0
+variable 	Data Counts
+gFatJet_pt	360.0
+variable 	Data Counts
+gFatJet_eta	362.0
+variable 	Data Counts
+allTau_pt	361.0
+variable 	Data Counts
+allTau_eta	362.0
+variable 	Data Counts
+gTau_pt	361.0
+variable 	Data Counts
+gTau_eta	362.0
+variable 	Data Counts
+gFatJet_pt	360.0
+variable 	Data Counts
+gFatJet_eta	362.0
+variable 	Data Counts
+allTau_pt	361.0
+variable 	Data Counts
+allTau_eta	362.0
+variable 	Data Counts
+gTau_pt	510.0
+variable 	Data Counts
+gTau_eta	510.0
+variable 	Data Counts
+gFatJet_pt	654.0
+variable 	Data Counts
+gFatJet_eta	655.0
+variable 	Data Counts
+allTau_pt	510.0
+variable 	Data Counts
+allTau_eta	510.0
+variable 	Data Counts
+gTau_pt	511.0
+variable 	Data Counts
+gTau_eta	511.0
+variable 	Data Counts
+gFatJet_pt	655.0
+variable 	Data Counts
+gFatJet_eta	656.0
+variable 	Data Counts
+allTau_pt	511.0
+variable 	Data Counts
+allTau_eta	511.0
+variable 	Data Counts
+gTau_pt	281.0
+variable 	Data Counts
+gTau_eta	281.0
+variable 	Data Counts
+gFatJet_pt	281.0
+variable 	Data Counts
+gFatJet_eta	281.0
+variable 	Data Counts
+allTau_pt	281.0
+variable 	Data Counts
+allTau_eta	281.0
+variable 	Data Counts
+gTau_pt	277.0
+variable 	Data Counts
+gTau_eta	277.0
+variable 	Data Counts
+gFatJet_pt	277.0
+variable 	Data Counts
+gFatJet_eta	277.0
+variable 	Data Counts
+allTau_pt	277.0
+variable 	Data Counts
+allTau_eta	277.0
+variable 	Data Counts
+gTau_pt	1253.0
+variable 	Data Counts
+gTau_eta	1253.0
+variable 	Data Counts
+gFatJet_pt	1761.0
+variable 	Data Counts
+gFatJet_eta	1763.0
+variable 	Data Counts
+allTau_pt	1253.0
+variable 	Data Counts
+allTau_eta	1253.0
+variable 	Data Counts
+gTau_pt	1250.0
+variable 	Data Counts
+gTau_eta	1250.0
+variable 	Data Counts
+gFatJet_pt	1757.0
+variable 	Data Counts
+gFatJet_eta	1759.0
+variable 	Data Counts
+allTau_pt	1250.0
+variable 	Data Counts
+allTau_eta	1250.0
+variable 	Data Counts
+gTau_pt	1253.0
+variable 	Data Counts
+gTau_eta	1253.0
+variable 	Data Counts
+gFatJet_pt	1761.0
+variable 	Data Counts
+gFatJet_eta	1763.0
+variable 	Data Counts
+allTau_pt	1253.0
+variable 	Data Counts
+allTau_eta	1253.0
+variable 	Data Counts
+gTau_pt	511.0
+variable 	Data Counts
+gTau_eta	511.0
+variable 	Data Counts
+gFatJet_pt	655.0
+variable 	Data Counts
+gFatJet_eta	656.0
+variable 	Data Counts
+allTau_pt	511.0
+variable 	Data Counts
+allTau_eta	511.0
+variable 	Data Counts
+gTau_pt	511.0
+variable 	Data Counts
+gTau_eta	511.0
+variable 	Data Counts
+gFatJet_pt	655.0
+variable 	Data Counts
+gFatJet_eta	656.0
+variable 	Data Counts
+allTau_pt	511.0
+variable 	Data Counts
+allTau_eta	511.0
+variable 	Data Counts
+gDeltaR_LL	163.0
+variable 	Data Counts
+gDeltaR_LL	163.0
+variable 	Data Counts
+gTau_pt	403.0
+variable 	Data Counts
+gTau_eta	404.0
+variable 	Data Counts
+gFatJet_pt	402.0
+variable 	Data Counts
+gFatJet_eta	404.0
+variable 	Data Counts
+allTau_pt	403.0
+variable 	Data Counts
+allTau_eta	404.0
+variable 	Data Counts
+gTau_pt	403.0
+variable 	Data Counts
+gTau_eta	404.0
+variable 	Data Counts
+gFatJet_pt	402.0
+variable 	Data Counts
+gFatJet_eta	404.0
+variable 	Data Counts
+allTau_pt	403.0
+variable 	Data Counts
+allTau_eta	404.0
+variable 	Data Counts
+gTau_pt	350.0
+variable 	Data Counts
+gTau_eta	350.0
+variable 	Data Counts
+gFatJet_pt	175.0
+variable 	Data Counts
+gFatJet_eta	175.0
+variable 	Data Counts
+allTau_pt	350.0
+variable 	Data Counts
+allTau_eta	350.0
+variable 	Data Counts
+gTau_pt	350.0
+variable 	Data Counts
+gTau_eta	350.0
+variable 	Data Counts
+gFatJet_pt	175.0
+variable 	Data Counts
+gFatJet_eta	175.0
+variable 	Data Counts
+allTau_pt	350.0
+variable 	Data Counts
+allTau_eta	350.0
+variable 	Data Counts
+gTau_pt	403.0
+variable 	Data Counts
+gTau_eta	404.0
+variable 	Data Counts
+gFatJet_pt	402.0
+variable 	Data Counts
+gFatJet_eta	404.0
+variable 	Data Counts
+allTau_pt	403.0
+variable 	Data Counts
+allTau_eta	404.0
+variable 	Data Counts
+gTau_pt	300.0
+variable 	Data Counts
+gTau_eta	300.0
+variable 	Data Counts
+gFatJet_pt	300.0
+variable 	Data Counts
+gFatJet_eta	300.0
+variable 	Data Counts
+allTau_pt	300.0
+variable 	Data Counts
+allTau_eta	300.0
+variable 	Data Counts
+variable 	Data Counts
+gTau_pt	350.0
+variable 	Data Counts
+gTau_eta	350.0
+variable 	Data Counts
+gFatJet_pt	175.0
+variable 	Data Counts
+gFatJet_eta	175.0
+variable 	Data Counts
+allTau_pt	350.0
+variable 	Data Counts
+allTau_eta	350.0
+variable 	Data Counts
+gTau_pt	934.0
+variable 	Data Counts
+gTau_eta	934.0
+variable 	Data Counts
+gFatJet_pt	467.0
+variable 	Data Counts
+gFatJet_eta	467.0
+variable 	Data Counts
+allTau_pt	934.0
+variable 	Data Counts
+allTau_eta	934.0
+variable 	Data Counts
+gTau_pt	934.0
+variable 	Data Counts
+gTau_eta	934.0
+variable 	Data Counts
+gFatJet_pt	467.0
+variable 	Data Counts
+gFatJet_eta	467.0
+variable 	Data Counts
+allTau_pt	934.0
+variable 	Data Counts
+allTau_eta	934.0
+variable 	Data Counts
+gTau_pt	914.0
+variable 	Data Counts
+gTau_eta	914.0
+variable 	Data Counts
+gFatJet_pt	457.0
+variable 	Data Counts
+gFatJet_eta	457.0
+variable 	Data Counts
+allTau_pt	914.0
+variable 	Data Counts
+allTau_eta	914.0
+variable 	Data Counts
+gTau_pt	914.0
+variable 	Data Counts
+gTau_eta	914.0
+variable 	Data Counts
+gFatJet_pt	457.0
+variable 	Data Counts
+gFatJet_eta	457.0
+variable 	Data Counts
+allTau_pt	914.0
+variable 	Data Counts
+allTau_eta	914.0
+variable 	Data Counts
+gTau_pt	920.0
+variable 	Data Counts
+gTau_eta	920.0
+variable 	Data Counts
+gFatJet_pt	460.0
+variable 	Data Counts
+gFatJet_eta	460.0
+variable 	Data Counts
+allTau_pt	920.0
+variable 	Data Counts
+allTau_eta	920.0
+variable 	Data Counts
+gTau_pt	837.0
+variable 	Data Counts
+gTau_eta	838.0
+variable 	Data Counts
+gFatJet_pt	836.0
+variable 	Data Counts
+gFatJet_eta	838.0
+variable 	Data Counts
+allTau_pt	837.0
+variable 	Data Counts
+allTau_eta	838.0
+variable 	Data Counts
+gElectron_pt	838.0
+variable 	Data Counts
+gElectron_eta	838.0
+variable 	Data Counts
+gTau_pt	835.0
+variable 	Data Counts
+gTau_eta	836.0
+variable 	Data Counts
+gFatJet_pt	834.0
+variable 	Data Counts
+gFatJet_eta	836.0
+variable 	Data Counts
+allTau_pt	835.0
+variable 	Data Counts
+allTau_eta	836.0
+variable 	Data Counts
+gElectron_pt	836.0
+variable 	Data Counts
+gElectron_eta	836.0
+variable 	Data Counts
+gTau_pt	687.0
+variable 	Data Counts
+gTau_eta	687.0
+variable 	Data Counts
+gFatJet_pt	687.0
+variable 	Data Counts
+gFatJet_eta	687.0
+variable 	Data Counts
+allTau_pt	687.0
+variable 	Data Counts
+allTau_eta	687.0
+variable 	Data Counts
+variable 	Data Counts
+gTau_pt	687.0
+variable 	Data Counts
+gTau_eta	687.0
+variable 	Data Counts
+gFatJet_pt	687.0
+variable 	Data Counts
+gFatJet_eta	687.0
+variable 	Data Counts
+allTau_pt	687.0
+variable 	Data Counts
+allTau_eta	687.0
+variable 	Data Counts
+gMuon_pt	687.0
+variable 	Data Counts
+gMuon_eta	687.0
+variable 	Data Counts
+gTau_pt	689.0
+variable 	Data Counts
+gTau_eta	689.0
+variable 	Data Counts
+gFatJet_pt	689.0
+variable 	Data Counts
+gFatJet_eta	689.0
+variable 	Data Counts
+allTau_pt	689.0
+variable 	Data Counts
+allTau_eta	689.0
+variable 	Data Counts
+gMuon_pt	689.0
+variable 	Data Counts
+gMuon_eta	689.0
+variable 	Data Counts
+gTau_pt	689.0
+variable 	Data Counts
+gTau_eta	689.0
+variable 	Data Counts
+gFatJet_pt	689.0
+variable 	Data Counts
+gFatJet_eta	689.0
+variable 	Data Counts
+allTau_pt	689.0
+variable 	Data Counts
+allTau_eta	689.0
+variable 	Data Counts
+gMuon_pt	689.0
+variable 	Data Counts
+gMuon_eta	689.0
+variable 	Data Counts
+gTau_pt	687.0
+variable 	Data Counts
+gTau_eta	687.0
+variable 	Data Counts
+gFatJet_pt	687.0
+variable 	Data Counts
+gFatJet_eta	687.0
+variable 	Data Counts
+allTau_pt	687.0
+variable 	Data Counts
+allTau_eta	687.0
+variable 	Data Counts
+gMuon_pt	687.0
+variable 	Data Counts
+gMuon_eta	687.0
+variable 	Data Counts
+gTau_pt	837.0
+variable 	Data Counts
+gTau_eta	838.0
+variable 	Data Counts
+gFatJet_pt	836.0
+variable 	Data Counts
+gFatJet_eta	838.0
+variable 	Data Counts
+allTau_pt	837.0
+variable 	Data Counts
+allTau_eta	838.0
+variable 	Data Counts
+gElectron_pt	838.0
+variable 	Data Counts
+gElectron_eta	838.0
+variable 	Data Counts
+gTau_pt	835.0
+variable 	Data Counts
+gTau_eta	836.0
+variable 	Data Counts
+gFatJet_pt	834.0
+variable 	Data Counts
+gFatJet_eta	836.0
+variable 	Data Counts
+allTau_pt	835.0
+variable 	Data Counts
+allTau_eta	836.0
+variable 	Data Counts
+gElectron_pt	836.0
+variable 	Data Counts
+gElectron_eta	836.0
+variable 	Data Counts
+gTau_pt	920.0
+variable 	Data Counts
+gTau_eta	920.0
+variable 	Data Counts
+gFatJet_pt	460.0
+variable 	Data Counts
+gFatJet_eta	460.0
+variable 	Data Counts
+allTau_pt	920.0
+variable 	Data Counts
+allTau_eta	920.0
+variable 	Data Counts
+gTau_pt	914.0
+variable 	Data Counts
+gTau_eta	914.0
+variable 	Data Counts
+gFatJet_pt	457.0
+variable 	Data Counts
+gFatJet_eta	457.0
+variable 	Data Counts
+allTau_pt	914.0
+variable 	Data Counts
+allTau_eta	914.0
+variable 	Data Counts
+variable 	Data Counts
+gFatJet_pt	150.0
+variable 	Data Counts
+gFatJet_eta	150.0
+variable 	Data Counts
+allTau_pt	300.0
+variable 	Data Counts
+allTau_eta	300.0
+variable 	Data Counts
+gDeltaR_LL	150.0
+variable 	Data Counts
+gFatJet_pt	182.0
+variable 	Data Counts
+gFatJet_eta	184.0
+variable 	Data Counts
+allTau_pt	183.0
+variable 	Data Counts
+allTau_eta	184.0
+variable 	Data Counts
+gDeltaR_LL	184.0
+variable 	Data Counts
+gElectron_pt	184.0
+variable 	Data Counts
+gElectron_eta	184.0
+variable 	Data Counts
+gFatJet_pt	142.0
+variable 	Data Counts
+gFatJet_eta	142.0
+variable 	Data Counts
+allTau_pt	142.0
+variable 	Data Counts
+allTau_eta	142.0
+variable 	Data Counts
+gDeltaR_LL	142.0
+variable 	Data Counts
+gMuon_pt	142.0
+variable 	Data Counts
+gMuon_eta	142.0
+variable 	Data Counts
+gFatJet_pt	373.0
+variable 	Data Counts
+gFatJet_eta	373.0
+variable 	Data Counts
+allTau_pt	373.0
+variable 	Data Counts
+allTau_eta	373.0
+variable 	Data Counts
+gDeltaR_LL	373.0
+variable 	Data Counts
+gMuon_pt	373.0
+variable 	Data Counts
+gMuon_eta	373.0
+variable 	Data Counts
+gFatJet_pt	477.0
+variable 	Data Counts
+gFatJet_eta	479.0
+variable 	Data Counts
+allTau_pt	478.0
+variable 	Data Counts
+allTau_eta	479.0
+variable 	Data Counts
+gDeltaR_LL	479.0
+variable 	Data Counts
+gElectron_pt	478.0
+variable 	Data Counts
+gElectron_eta	479.0
+variable 	Data Counts
+gFatJet_pt	388.0
+variable 	Data Counts
+gFatJet_eta	388.0
+variable 	Data Counts
+allTau_pt	776.0
+variable 	Data Counts
+allTau_eta	776.0
+variable 	Data Counts
+gDeltaR_LL	388.0
+variable 	Data Counts
+gFatJet_pt[0]	480.0
+variable 	Data Counts
+gFatJet_eta[0]	481.0
+variable 	Data Counts
+allTau_pt	961.0
+variable 	Data Counts
+allTau_eta	962.0
+variable 	Data Counts
+gDeltaR_LL	481.0
+variable 	Data Counts
+gFatJet_pt[0]	710.0
+variable 	Data Counts
+gFatJet_eta[0]	712.0
+variable 	Data Counts
+allTau_pt	712.0
+variable 	Data Counts
+allTau_eta	712.0
+variable 	Data Counts
+gDeltaR_LL	712.0
+variable 	Data Counts
+gElectron_pt	712.0
+variable 	Data Counts
+gElectron_eta	712.0
+variable 	Data Counts
+gFatJet_pt[0]	480.0
+variable 	Data Counts
+gFatJet_eta[0]	481.0
+variable 	Data Counts
+allTau_pt	961.0
+variable 	Data Counts
+allTau_eta	962.0
+variable 	Data Counts
+gDeltaR_LL	481.0
+variable 	Data Counts
+variable 	Data Counts
+gFatJet_pt[0]	1623.0
+variable 	Data Counts
+gFatJet_eta[0]	1627.0
+variable 	Data Counts
+allTau_pt	1626.0
+variable 	Data Counts
+allTau_eta	1627.0
+variable 	Data Counts
+gDeltaR_LL	1627.0
+variable 	Data Counts
+gMuon_pt	1627.0
+variable 	Data Counts
+gMuon_eta	1627.0
+variable 	Data Counts
+gFatJet_pt[0]	1205.0
+variable 	Data Counts
+gFatJet_eta[0]	1208.0
+variable 	Data Counts
+allTau_pt	1208.0
+variable 	Data Counts
+allTau_eta	1208.0
+variable 	Data Counts
+gDeltaR_LL	1208.0
+variable 	Data Counts
+gMuon_pt	1208.0
+variable 	Data Counts
+gMuon_eta	1208.0
+variable 	Data Counts
+gFatJet_pt[0]	563.0
+variable 	Data Counts
+gFatJet_eta[0]	564.0
+variable 	Data Counts
+allTau_pt	564.0
+variable 	Data Counts
+allTau_eta	564.0
+variable 	Data Counts
+gDeltaR_LL	564.0
+variable 	Data Counts
+gElectron_pt	564.0
+variable 	Data Counts
+gElectron_eta	564.0
+variable 	Data Counts
+gFatJet_pt[0]	348.0
+variable 	Data Counts
+gFatJet_eta[0]	348.0
+variable 	Data Counts
+allTau_pt	696.0
+variable 	Data Counts
+allTau_eta	696.0
+variable 	Data Counts
+gDeltaR_LL	348.0
+variable 	Data Counts
+gFatJet_pt[0]	179.0
+variable 	Data Counts
+gFatJet_eta[0]	180.0
+variable 	Data Counts
+allTau_pt	359.0
+variable 	Data Counts
+allTau_eta	360.0
+variable 	Data Counts
+gDeltaR_LL	180.0
+variable 	Data Counts
+gFatJet_pt[0]	320.0
+variable 	Data Counts
+gFatJet_eta[0]	322.0
+variable 	Data Counts
+allTau_pt	322.0
+variable 	Data Counts
+allTau_eta	322.0
+variable 	Data Counts
+gDeltaR_LL	322.0
+variable 	Data Counts
+gElectron_pt	322.0
+variable 	Data Counts
+gElectron_eta	322.0
+variable 	Data Counts
+gFatJet_pt[0]	783.0
+variable 	Data Counts
+gFatJet_eta[0]	784.0
+variable 	Data Counts
+allTau_pt	783.0
+variable 	Data Counts
+allTau_eta	784.0
+variable 	Data Counts
+gDeltaR_LL	784.0
+variable 	Data Counts
+gMuon_pt	784.0
+variable 	Data Counts
+gMuon_eta	784.0
+variable 	Data Counts
+gTau_pt	350.0
+variable 	Data Counts
+gTau_eta	350.0
+variable 	Data Counts
+gFatJet_pt[0]	175.0
+variable 	Data Counts
+gFatJet_eta[0]	175.0
+variable 	Data Counts
+allTau_pt	350.0
+variable 	Data Counts
+allTau_eta	350.0
+variable 	Data Counts
+gDeltaR_LL	175.0
+variable 	Data Counts
+gTau_pt	403.0
+variable 	Data Counts
+gTau_eta	404.0
+variable 	Data Counts
+gFatJet_pt[0]	402.0
+variable 	Data Counts
+gFatJet_eta[0]	404.0
+variable 	Data Counts
+allTau_pt	403.0
+variable 	Data Counts
+allTau_eta	404.0
+variable 	Data Counts
+gDeltaR_LL	404.0
+variable 	Data Counts
+gElectron_pt	403.0
+variable 	Data Counts
+gElectron_eta	404.0
+variable 	Data Counts
+gTau_pt	300.0
+variable 	Data Counts
+gTau_eta	300.0
+variable 	Data Counts
+gFatJet_pt[0]	300.0
+variable 	Data Counts
+gFatJet_eta[0]	300.0
+variable 	Data Counts
+allTau_pt	300.0
+variable 	Data Counts
+allTau_eta	300.0
+variable 	Data Counts
+gDeltaR_LL	300.0
+variable 	Data Counts
+gMuon_pt	300.0
+variable 	Data Counts
+gMuon_eta	300.0
+variable 	Data Counts
+variable 	Data Counts
+gFatJet_pt[0]	142.0
+variable 	Data Counts
+gFatJet_eta[0]	142.0
+variable 	Data Counts
+allTau_pt	142.0
+variable 	Data Counts
+allTau_eta	142.0
+variable 	Data Counts
+gDeltaR_LL	142.0
+variable 	Data Counts
+gMuon_pt	142.0
+variable 	Data Counts
+gMuon_eta	142.0
+variable 	Data Counts
+gFatJet_pt[0]	182.0
+variable 	Data Counts
+gFatJet_eta[0]	184.0
+variable 	Data Counts
+allTau_pt	183.0
+variable 	Data Counts
+allTau_eta	184.0
+variable 	Data Counts
+gDeltaR_LL	184.0
+variable 	Data Counts
+gElectron_pt	184.0
+variable 	Data Counts
+gElectron_eta	184.0
+variable 	Data Counts
+gFatJet_pt[0]	150.0
+variable 	Data Counts
+gFatJet_eta[0]	150.0
+variable 	Data Counts
+allTau_pt	300.0
+variable 	Data Counts
+allTau_eta	300.0
+variable 	Data Counts
+gDeltaR_LL	150.0
+variable 	Data Counts
+gFatJet_pt[0]	150.0
+variable 	Data Counts
+gFatJet_eta[0]	150.0
+variable 	Data Counts
+allTau_pt	300.0
+variable 	Data Counts
+allTau_eta	300.0
+variable 	Data Counts
+gDeltaR_LL	150.0
+variable 	Data Counts
+gFatJet_pt[0]	182.0
+variable 	Data Counts
+gFatJet_eta[0]	184.0
+variable 	Data Counts
+allTau_pt	183.0
+variable 	Data Counts
+allTau_eta	184.0
+variable 	Data Counts
+gDeltaR_LL	184.0
+variable 	Data Counts
+gElectron_pt	184.0
+variable 	Data Counts
+gElectron_eta	184.0
+variable 	Data Counts
+variable 	Data Counts
+gFatJet_pt[0]	142.0
+variable 	Data Counts
+gFatJet_eta[0]	142.0
+variable 	Data Counts
+allTau_pt	142.0
+variable 	Data Counts
+allTau_eta	142.0
+variable 	Data Counts
+gDeltaR_LL	142.0
+variable 	Data Counts
+gMuon_pt	142.0
+variable 	Data Counts
+gMuon_eta	142.0
+variable 	Data Counts
+gFatJet_pt[0]	373.0
+variable 	Data Counts
+gFatJet_eta[0]	373.0
+variable 	Data Counts
+allTau_pt	373.0
+variable 	Data Counts
+allTau_eta	373.0
+variable 	Data Counts
+gDeltaR_LL	373.0
+variable 	Data Counts
+gMuon_pt	373.0
+variable 	Data Counts
+gMuon_eta	373.0
+variable 	Data Counts
+gTau_pt	232.0
+variable 	Data Counts
+gTau_eta	232.0
+variable 	Data Counts
+gFatJet_pt[0]	373.0
+variable 	Data Counts
+gFatJet_eta[0]	373.0
+variable 	Data Counts
+allTau_pt	373.0
+variable 	Data Counts
+allTau_eta	373.0
+variable 	Data Counts
+gDeltaR_LL	373.0
+variable 	Data Counts
+gMuon_pt	373.0
+variable 	Data Counts
+gMuon_eta	373.0
+variable 	Data Counts
+gTau_pt	232.0
+variable 	Data Counts
+gTau_eta	232.0
+variable 	Data Counts
+gboostedTau_pt	141.0
+variable 	Data Counts
+gboostedTau_eta	141.0
+variable 	Data Counts
+gFatJet_pt[0]	373.0
+variable 	Data Counts
+gFatJet_eta[0]	373.0
+variable 	Data Counts
+allTau_pt	373.0
+variable 	Data Counts
+allTau_eta	373.0
+variable 	Data Counts
+gDeltaR_LL	373.0
+variable 	Data Counts
+gMuon_pt	373.0
+variable 	Data Counts
+gMuon_eta	373.0
+variable 	Data Counts
+gTau_pt	232.0
+variable 	Data Counts
+gTau_eta	232.0
+variable 	Data Counts
+gboostedTau_pt	181.0
+variable 	Data Counts
+gboostedTau_eta	182.0
+variable 	Data Counts
+gFatJet_pt[0]	477.0
+variable 	Data Counts
+gFatJet_eta[0]	479.0
+variable 	Data Counts
+allTau_pt	478.0
+variable 	Data Counts
+allTau_eta	479.0
+variable 	Data Counts
+gDeltaR_LL	479.0
+variable 	Data Counts
+gElectron_pt	478.0
+variable 	Data Counts
+gElectron_eta	479.0
+variable 	Data Counts
+gTau_pt	297.0
+variable 	Data Counts
+gTau_eta	297.0
+variable 	Data Counts
+gboostedTau_pt	141.0
+variable 	Data Counts
+gboostedTau_eta	141.0
+variable 	Data Counts
+gFatJet_pt[0]	373.0
+variable 	Data Counts
+gFatJet_eta[0]	373.0
+variable 	Data Counts
+allTau_pt	373.0
+variable 	Data Counts
+allTau_eta	373.0
+variable 	Data Counts
+gDeltaR_LL	373.0
+variable 	Data Counts
+variable 	Data Counts
+gboostedTau_pt	141.0
+variable 	Data Counts
+gboostedTau_eta	141.0
+variable 	Data Counts
+gFatJet_pt[0]	373.0
+variable 	Data Counts
+gFatJet_eta[0]	373.0
+variable 	Data Counts
+allTau_pt	373.0
+variable 	Data Counts
+allTau_eta	373.0
+variable 	Data Counts
+gDeltaR_LL	373.0
+variable 	Data Counts
+gMuon_pt	373.0
+variable 	Data Counts
+gMuon_eta	373.0
+variable 	Data Counts
+gTau_pt	232.0
+variable 	Data Counts
+gTau_eta	232.0
+variable 	Data Counts
+gboostedTau_pt	142.0
+variable 	Data Counts
+gboostedTau_eta	142.0
+variable 	Data Counts
+gFatJet_pt[0]	142.0
+variable 	Data Counts
+gFatJet_eta[0]	142.0
+variable 	Data Counts
+allTau_pt	142.0
+variable 	Data Counts
+allTau_eta	142.0
+variable 	Data Counts
+gboostedTau_pt	142.0
+variable 	Data Counts
+gboostedTau_eta	142.0
+variable 	Data Counts
+gFatJet_pt[0]	142.0
+variable 	Data Counts
+gFatJet_eta[0]	142.0
+variable 	Data Counts
+allTau_pt	142.0
+variable 	Data Counts
+allTau_eta	142.0
+variable 	Data Counts
+gboostedTau_pt	142.0
+variable 	Data Counts
+gboostedTau_eta	142.0
+variable 	Data Counts
+gFatJet_pt[0]	142.0
+variable 	Data Counts
+gFatJet_eta[0]	142.0
+variable 	Data Counts
+allTau_pt	142.0
+variable 	Data Counts
+allTau_eta	142.0
+variable 	Data Counts
+gDeltaR_LL	142.0
+variable 	Data Counts
+gMuon_pt	142.0
+variable 	Data Counts
+gMuon_eta	142.0
+variable 	Data Counts
+gboostedTau_pt	183.0
+variable 	Data Counts
+gboostedTau_eta	184.0
+variable 	Data Counts
+gFatJet_pt[0]	182.0
+variable 	Data Counts
+gFatJet_eta[0]	184.0
+variable 	Data Counts
+allTau_pt	183.0
+variable 	Data Counts
+allTau_eta	184.0
+variable 	Data Counts
+gDeltaR_LL	184.0
+variable 	Data Counts
+gElectron_pt	184.0
+variable 	Data Counts
+gElectron_eta	184.0
+variable 	Data Counts
+gboostedTau_pt	300.0
+variable 	Data Counts
+gboostedTau_eta	300.0
+variable 	Data Counts
+gFatJet_pt[0]	150.0
+variable 	Data Counts
+gFatJet_eta[0]	150.0
+variable 	Data Counts
+allTau_pt	300.0
+variable 	Data Counts
+allTau_eta	300.0
+variable 	Data Counts
+gDeltaR_LL	150.0
+variable 	Data Counts
+gTau_pt	350.0
+variable 	Data Counts
+gTau_eta	350.0
+variable 	Data Counts
+gFatJet_pt[0]	175.0
+variable 	Data Counts
+gFatJet_eta[0]	175.0
+variable 	Data Counts
+allTau_pt	350.0
+variable 	Data Counts
+allTau_eta	350.0
+variable 	Data Counts
+gDeltaR_LL	175.0
+variable 	Data Counts
+gTau_pt	403.0
+variable 	Data Counts
+gTau_eta	404.0
+variable 	Data Counts
+gFatJet_pt[0]	402.0
+variable 	Data Counts
+gFatJet_eta[0]	404.0
+variable 	Data Counts
+allTau_pt	403.0
+variable 	Data Counts
+allTau_eta	404.0
+variable 	Data Counts
+gDeltaR_LL	404.0
+variable 	Data Counts
+gElectron_pt	403.0
+variable 	Data Counts
+gElectron_eta	404.0
+variable 	Data Counts
+gTau_pt	300.0
+variable 	Data Counts
+gTau_eta	300.0
+variable 	Data Counts
+gFatJet_pt[0]	300.0
+variable 	Data Counts
+gFatJet_eta[0]	300.0
+variable 	Data Counts
+allTau_pt	300.0
+variable 	Data Counts
+allTau_eta	300.0
+variable 	Data Counts
+gDeltaR_LL	300.0
+variable 	Data Counts
+gMuon_pt	300.0
+variable 	Data Counts
+gMuon_eta	300.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	1535.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	720.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	815.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	720.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	815.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	815.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	815.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	1568.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	847.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	720.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	815.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	720.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	815.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	815.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	720.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	465.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	720.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	815.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	2000.0
+variable 	Data Counts
+fastMTT_RadionLeg_m	2000.0

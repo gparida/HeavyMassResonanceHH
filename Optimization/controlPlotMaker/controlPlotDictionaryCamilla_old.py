@@ -1,0 +1,90 @@
+variableAxisTitleDictionary = {
+    "gFatJet_pt":"FatJet_pt",
+    "gFatJet_eta":"FatJet_eta",
+    "gFatJet_msoftdrop":"FatJet_msoftdrop",
+    "MET_pt":"MET",
+    "allTau_pt":"reconstructed_Tau_pt",
+    "allTau_eta":"reconstructed_Tau_eta",
+    "gMuon_pt":"Muon_pt",
+    "gMuon_eta":"Muon_eta",
+    "gElectron_pt":"Electron_pt",
+    "gElectron_eta":"Electron_eta",
+    "gDeltaR_LL":"DeltaR_LL",
+    "VisRadion_m":"Visible Radion Mass"
+}
+
+variableSettingDictionary = {
+    "gFatJet_pt":"45,0,1500",
+    "gFatJet_eta":"30,-3.14,3.14",
+    "gFatJet_msoftdrop":"25,0.0,250.0",
+    "MET_pt":"50,0,1000",
+    "allTau_pt":"50,0,1000",
+    "allTau_eta":"30,-3.14,3.14",
+    "gMuon_pt":"50,0,1000",
+    "gMuon_eta":"30,-3.14,3.14",
+    "gElectron_pt":"50,0,1000",
+    "gElectron_eta":"30,-3.14,3.14",
+    "gDeltaR_LL":"15,0,1.5",
+    "VisRadion_m":"40,0,2000"
+}
+
+
+DatasetNameList=[                              
+#"DYJetsToLL_M-4to50_HT-100to200",    
+#"DYJetsToLL_M-4to50_HT-200to400",    
+#"DYJetsToLL_M-4to50_HT-400to600",    
+#"DYJetsToLL_M-4to50_HT-600toInf",    
+#"DYJetsToLL_M-4to50_HT-70to100",     
+"DYJets_HT-100to200",       
+"DYJets_HT-1200to2500",     
+"DYJets_HT-200to400",       
+"DYJets_HT-2500toinf",      
+"DYJets_HT-400to600",       
+"DYJets_HT-600to800",       
+"DYJets_HT-800to1200",
+"DYJetsToLL_M-10to50",      
+"QCD_HT1000to1500",                  
+"QCD_HT100to200",                    
+"QCD_HT1500to2000",                  
+"QCD_HT2000toinf",                   
+"QCD_HT200to300",                  
+"QCD_HT300to500",                  
+"QCD_HT500to700",                         
+#"QCD_HT50to100",                          
+"QCD_HT700to1000",                            
+"ST_s-channel_4f",           
+"ST_t-channel_antitop_4f",
+"ST_t-channel_top_4f",    
+"ST_tW_antitop_5f",
+"ST_tW_top_5f",
+"TTTo2L2Nu",
+"TTToHadronic",
+"TTToSemiLeptonic",
+"WJets_HT-100To200",
+"WJets_HT-1200to2500",
+"WJets_HT-200to400",
+"WJets_HT-2500toInf",
+"WJets_HT-400to600",
+"WJets_HT-600to800",
+"WJets_HT-800to1200",
+"WWTo1L1Nu2Q",
+"WZTo1L1nu2q",
+"WZTo2Q2Nu",
+"ZZTo2Q2Nu",
+"Data"
+]   
+
+
+SignalNameList=[
+"RadionTohhtohtatahbb_M-1000",
+"RadionTohhtohtatahbb_M-1200",
+"RadionTohhTohtatahbb_M-1400",
+"RadionTohhtohtatahbb_M-1600",
+"RadionTohhtohtatahbb_M-1800",
+"Radiontohhtohtatahbb_M-2000",
+"Radiontohhtohtatahbb_M-2500",
+"Radiontohhtohtatahbb_M-3000",
+"Radiontohhtohtatahbb_M-3500",
+"Radiontohhtohtatahbb_M-4000",
+"Radiontohhtohtatahbb_M-4500"
+]

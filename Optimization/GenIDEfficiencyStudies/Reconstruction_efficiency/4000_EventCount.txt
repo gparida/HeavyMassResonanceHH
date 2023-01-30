@@ -1,0 +1,9 @@
+Di - Tau Events = 16308
+E - Tau Events = 10187
+M - Tau Events = 10005
+Other Channels = 5849
+No Leptons = 0
+One lepton = 0
+More handronic taus = 1
+More taus = 0
+differnet mothers = 0

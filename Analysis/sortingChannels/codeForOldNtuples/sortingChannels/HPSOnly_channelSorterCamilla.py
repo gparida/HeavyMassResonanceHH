@@ -4,8 +4,6 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.eventloop import Module
 from addingNewObservableBranches.visibleMassCamilla import VisibleMassCamilla  #Importing modules works if the folders are in the place where the scripts are
 from addingNewObservableBranches.fastMTTBranches import fastMTTBranches
 from sortingTausCamilla import mergeTauCamilla
-from addingNewObservableBranches.genMatchingForLeptons import LeptonMC_MatchingWithTausAndBQuark
-
 import ROOT
 import glob
 from particleClass import particle
@@ -208,14 +206,14 @@ class ChannelCamilla(Module):
 		self.Jet.apply_cut(lambda x: (x.pt > 20) and (x.btagDeepB >= 0.8767))
 		
 		self.Tau.setupCollection(event) 
-		self.Tau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idDeepTau2017v2p1VSjet & 1 == 1) and (x.decayMode == 0 or x.decayMode == 1 or x.decayMode == 2 or x.decayMode == 7 or x.decayMode == 10 or x.decayMode == 11))  #Deeptau ID for the standard Taus loosest WP - VVVL
+		self.Tau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idDeepTau2017v2p1VSjet & 1 == 1) and ((x.decayMode == 0) or (x.decayMode == 1) or (x.decayMode == 2) or (x.decayMode == 7) or (x.decayMode == 10) or (x.decayMode == 11)))  #Deeptau ID for the standard Taus loosest WP - VVVL
 		
 
 
 		self.boostedTau.setupCollection(event)
-		self.boostedTau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idMVAnewDM2017v2 & 1 == 1) and (x.decayMode == 0 or x.decayMode == 1 or x.decayMode == 2 or x.decayMode == 7 or x.decayMode == 10 or x.decayMode == 11)) # VVLoose ID for newMVA for boosted Taus - but use oldMVA weighttn
+		self.boostedTau.apply_cut(lambda x: (x.pt > 20) and (abs(x.eta) < 2.3) and (x.idMVAnewDM2017v2 & 1 == 1) and ((x.decayMode == 0) or (x.decayMode == 1) or (x.decayMode == 2) or (x.decayMode == 7) or (x.decayMode == 10) or (x.decayMode == 11))) # VVLoose ID for newMVA for boosted Taus - but use oldMVA weighttn
 
-		self.Tau.collection =  filter(self.HPStauVeto,self.Tau.collection) #HPS veto applied
+		#self.Tau.collection =  filter(self.HPStauVeto,self.Tau.collection) #HPS veto applied
 
 		self.FatJet.setupCollection(event)
 		try:
@@ -257,11 +255,11 @@ class ChannelCamilla(Module):
 
 
 		if (len(self.FatJet.collection)==1 and len(self.Jet.collection)==0):
-			list["bb"]=self.selfPairing(self.boostedTau.collection)
+			#list["bb"]=self.selfPairing(self.boostedTau.collection)
 			list["tt"]=self.selfPairing(self.Tau.collection)
-			list["bt"]=self.crossPairing(self.boostedTau.collection,self.Tau.collection)
-			list["be"]=self.crossPairing(self.boostedTau.collection,self.Electron.collection)
-			list["bm"]=self.crossPairing(self.boostedTau.collection,self.Muon.collection)
+			#list["bt"]=self.crossPairing(self.boostedTau.collection,self.Tau.collection)
+			#list["be"]=self.crossPairing(self.boostedTau.collection,self.Electron.collection)
+			#list["bm"]=self.crossPairing(self.boostedTau.collection,self.Muon.collection)
 			list["te"]=self.crossPairing(self.Tau.collection,self.Electron.collection)
 			list["tm"]=self.crossPairing(self.Tau.collection,self.Muon.collection)
 
@@ -273,25 +271,25 @@ class ChannelCamilla(Module):
 
 			if (list[Keymax][0]>0):
 				#print(Keymax)
-				if Keymax == "bb":
-					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1] or self.boostedTau.collection.index(obj)==list[Keymax][2]]
-					#self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==-1 or self.Tau.collection.index(obj)==-1]
-					self.Tau.collection=[]
-					self.Muon.collection=[]
-					self.Electron.collection=[]
-					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1 or self.Electron.collection.index(obj)==-1]
-					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1 or self.Muon.collection.index(obj)==-1]
-					self.out.fillBranch("channel",0)
-				elif Keymax == "bt":
-					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
-					self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list[Keymax][2]]
-					self.Muon.collection = []
-					self.Electron.collection = []
-					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
-					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
-					self.out.fillBranch("channel",0)					
+		#		if Keymax == "bb":
+		#			self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1] or self.boostedTau.collection.index(obj)==list[Keymax][2]]
+		#			#self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==-1 or self.Tau.collection.index(obj)==-1]
+		#			self.Tau.collection=[]
+		#			self.Muon.collection=[]
+		#			self.Electron.collection=[]
+		#			#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1 or self.Electron.collection.index(obj)==-1]
+		#			#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1 or self.Muon.collection.index(obj)==-1]
+		#			self.out.fillBranch("channel",0)
+		#		elif Keymax == "bt":
+		#			self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
+		#			self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list[Keymax][2]]
+		#			self.Muon.collection = []
+		#			self.Electron.collection = []
+		#			#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
+		#			#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
+		#			self.out.fillBranch("channel",0)					
 
-				elif Keymax == "tt":
+				if Keymax == "tt":
 					#self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==-1]
 					self.boostedTau.collection = []
 					self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==list[Keymax][1] or self.Tau.collection.index(obj)==list[Keymax][2]]
@@ -311,16 +309,16 @@ class ChannelCamilla(Module):
 					self.Muon.collection = []
 					self.out.fillBranch("channel",1)
 				
-				elif Keymax == "be":
-					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
-					#self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==-1]
-					self.Tau.collection = []
-					self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==list[Keymax][2]]
-					#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
-					self.Muon.collection = []
-					#print ("print keymax and length",len(self.boostedTau.collection),len(self.Tau.collection),Keymax)
-					self.out.fillBranch("channel",1)
-
+		#		elif Keymax == "be":
+		#			self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
+		#			#self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==-1]
+		#			self.Tau.collection = []
+		#			self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==list[Keymax][2]]
+		#			#self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==-1]
+		#			self.Muon.collection = []
+		#			#print ("print keymax and length",len(self.boostedTau.collection),len(self.Tau.collection),Keymax)
+		#			self.out.fillBranch("channel",1)
+#
 				elif Keymax == "tm":
 					#self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==-1]
 					self.boostedTau.collection = []
@@ -330,14 +328,14 @@ class ChannelCamilla(Module):
 					self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list[Keymax][2]]
 					self.out.fillBranch("channel",2)
 
-				elif Keymax == "bm":
-					self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
-					#self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==-1]
-					self.Tau.collection = []
-					#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
-					self.Electron.collection = []
-					self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list[Keymax][2]]
-					self.out.fillBranch("channel",2)
+	#			elif Keymax == "bm":
+	#				self.boostedTau.collection = [obj for obj in self.boostedTau.collection if self.boostedTau.collection.index(obj)==list[Keymax][1]]
+	#				#self.Tau.collection = [obj for obj in self.Tau.collection if self.Tau.collection.index(obj)==-1]
+	#				self.Tau.collection = []
+	#				#self.Electron.collection = [obj for obj in self.Electron.collection if self.Electron.collection.index(obj)==-1]
+	#				self.Electron.collection = []
+	#				self.Muon.collection = [obj for obj in self.Muon.collection if self.Muon.collection.index(obj)==list[Keymax][2]]
+	#				self.out.fillBranch("channel",2)
 				else:
 					print ("This also happens")
 				
@@ -362,14 +360,13 @@ def call_postpoc(files):
 		tauOdering = lambda: mergeTauCamilla(filename)
 		visibleM = lambda:VisibleMassCamilla()
 		mttBranches = lambda:fastMTTBranches(filename)
-		genMatch = lambda:LeptonMC_MatchingWithTausAndBQuark()
 		#radBranches = lambda:genMeasurementRadionBranches(filename)
 		nameStrip=files.strip()
 		filename = (nameStrip.split('/')[-1]).split('.')[-2]
 		if filename == "Data":
 			p = PostProcessor(outputDir,[files], cut=cutsData,branchsel=outputbranches,modules=[letsSortChannels(),tauOdering(),visibleM(),mttBranches()], postfix=post,noOut=False,outputbranchsel=outputbranches)
 		else:
-			p = PostProcessor(outputDir,[files], cut=cuts,branchsel=outputbranches,modules=[letsSortChannels(),tauOdering(),visibleM(),mttBranches(),genMatch()], postfix=post,noOut=False,outputbranchsel=outputbranches)
+			p = PostProcessor(outputDir,[files], cut=cuts,branchsel=outputbranches,modules=[letsSortChannels(),tauOdering(),visibleM(),mttBranches()], postfix=post,noOut=False,outputbranchsel=outputbranches)
 
 
 		p.run()
@@ -386,7 +383,7 @@ if __name__ == "__main__":
 
 	#Define Event Selection - all those to be connected by and
 	eventSelectionAND = ["MET_pt>200",
-						"genWeight>0",
+						#"genWeight>0",
 						"PV_ndof > 4",
 						"abs(PV_z) < 24",
 						"sqrt(PV_x*PV_x+PV_y*PV_y) < 2",
@@ -412,20 +409,20 @@ if __name__ == "__main__":
 
 	#Define Eevnt Selection - all those to be connected by or
 
-	eventSelectionOR = [#"HLT_PFMETNoMu90_PFMHTNoMu90_IDTight",
+	eventSelectionOR = ["HLT_PFMETNoMu90_PFMHTNoMu90_IDTight", # Not present in some runs
             			"HLT_PFMETNoMu110_PFMHTNoMu110_IDTight",
             			"HLT_PFMETNoMu120_PFMHTNoMu120_IDTight",
             			"HLT_MonoCentralPFJet80_PFMETNoMu120_PFMHTNoMu120_IDTight",
             			"HLT_PFMET110_PFMHT110_IDTight",
             			"HLT_PFMET120_PFMHT120_IDTight",
-            			#"HLT_PFMET170_NoiseCleaned",
+            			#"HLT_PFMET170_NoiseCleaned",#Not present in Data in any sample
             			"HLT_PFMET170_HBHECleaned",
             			"HLT_PFMET170_HBHE_BeamHaloCleaned"]
 	
 
 
 	#fnames = ["/data/aloeliger/bbtautauAnalysis/2016/Data.root"]
-	fnames = glob.glob(args.inputLocation +  "/*Radion*.root")  #making a list of input files
+	fnames = glob.glob(args.inputLocation + "/*.root")  #making a list of input files
 	#outputDir = "/data/gparida/Background_Samples/bbtautauAnalysis/2016/{}_Channel".format(args.Channel)
 	outputDir = args.outputLocation
 	#outputDir = "."

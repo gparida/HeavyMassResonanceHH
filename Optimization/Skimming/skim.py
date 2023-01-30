@@ -82,7 +82,7 @@ if __name__ == "__main__":
 
 
 	#fnames = ["/data/aloeliger/bbtautauAnalysis/2016/Data.root"]
-	fnames = glob.glob(args.inputLocation + "/WZTo1L1Nu2Q_4f.root")  #making a list of input files
+	fnames = glob.glob(args.inputLocation + "/RadionTohhTohtatahbb_narrow_M-2000*.root")  #making a list of input files
 	#outputDir = "/data/gparida/Background_Samples/bbtautauAnalysis/2016/{}_Channel".format(args.Channel)
 	outputDir = args.outputLocation
 	#outputDir = "."
